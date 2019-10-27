@@ -1,6 +1,17 @@
+-- drop tables
+DROP TABLE Survey;
+DROP TABLE Professor;
+DROP TABLE Section;
+DROP TABLE TA;
+DROP TABLE Student;
+DROP TABLE Assists;
+DROP TABLE Attends;
+
+-- create tables for entities
 CREATE TABLE Survey
 (
 	survey_id integer PRIMARY KEY,
+	section_id integer,
 	q_1a integer,
 	q_1b integer,
 	q_1c integer,
@@ -21,17 +32,20 @@ CREATE TABLE Survey
 	q_4a integer,
 	q_4b integer,
 	q_4c integer,
-	q_5a varchar2(4000)
+	q_5a varchar2(4000),
+	CONSTRAINT FK_Survey_Section FOREIGN KEY (section_id) REFERENCES Section(section_id)
 );
 
 CREATE TABLE Professor
 (
-	email varchar(50) PRIMARY KEY
+	email varchar(50) PRIMARY KEY,
 );
 
 CREATE TABLE Section
 (
-	section_id integer PRIMARY KEY
+	section_id integer PRIMARY KEY,
+	email varchar(50),
+	CONSTRAINT FK_Professor_Professor FOREIGN KEY (email) REFERENCES Professor(email)
 );
 
 CREATE TABLE TA
@@ -44,3 +58,22 @@ CREATE TABLE Student
 	student_id integer PRIMARY KEY
 
 );
+
+--create tables for relationships
+
+CREATE TABLE Assists
+(
+	section_id integer,
+	ta_id integer,
+	CONSTRAINT FK_Assists_TA FOREIGN KEY (ta_id) REFERENCES TA(ta_id),
+	CONSTRAINT FK_Assists_Section FOREIGN KEY (section_id) REFERENCES Section(section_id)
+);
+
+CREATE TABLE Attends
+(
+	section_id integer,
+	student_id integer,
+	CONSTRAINT FK_Attends_Section FOREIGN KEY (section_id) REFERENCES Section(section_id),
+	CONSTRAINT FK_Attends_Student FOREIGN KEY (student_id) REFERENCES Student(student_id)
+);
+
