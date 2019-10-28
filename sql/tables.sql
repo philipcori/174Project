@@ -1,13 +1,37 @@
 -- drop tables
+/*
+DROP TABLE Attends;
+DROP TABLE Assists;
 DROP TABLE Survey;
-DROP TABLE Professor;
 DROP TABLE Section;
+DROP TABLE Professor;
 DROP TABLE TA;
 DROP TABLE Student;
-DROP TABLE Assists;
-DROP TABLE Attends;
 
+*/
 -- create tables for entities
+CREATE TABLE Professor
+(
+	email varchar(50) PRIMARY KEY
+);
+
+CREATE TABLE Student
+(
+	student_id integer PRIMARY KEY
+);
+
+CREATE TABLE TA
+(
+	ta_id integer PRIMARY KEY
+);
+
+CREATE TABLE Section
+(
+	section_id integer PRIMARY KEY,
+	email varchar(50),
+	CONSTRAINT FK_Section_Professor FOREIGN KEY (email) REFERENCES Professor(email)
+);
+
 CREATE TABLE Survey
 (
 	survey_id integer PRIMARY KEY,
@@ -34,29 +58,6 @@ CREATE TABLE Survey
 	q_4c integer,
 	q_5a varchar2(4000),
 	CONSTRAINT FK_Survey_Section FOREIGN KEY (section_id) REFERENCES Section(section_id)
-);
-
-CREATE TABLE Professor
-(
-	email varchar(50) PRIMARY KEY,
-);
-
-CREATE TABLE Section
-(
-	section_id integer PRIMARY KEY,
-	email varchar(50),
-	CONSTRAINT FK_Professor_Professor FOREIGN KEY (email) REFERENCES Professor(email)
-);
-
-CREATE TABLE TA
-(
-	ta_id integer PRIMARY KEY
-);
-
-CREATE TABLE Student
-(
-	student_id integer PRIMARY KEY
-
 );
 
 --create tables for relationships
