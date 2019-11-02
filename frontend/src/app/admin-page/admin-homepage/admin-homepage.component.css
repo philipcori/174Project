@@ -1,0 +1,188 @@
+.mediaViewInfo {
+    --web-view-name: Upload Page;
+    --web-view-id: Upload_Page;
+    --web-enable-deep-linking: true;
+}
+:root {
+    --web-view-ids: Upload_Page;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+.Upload_Page_Class {
+    position: absolute;
+    box-sizing: border-box;
+    background: #E5E5E5;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    --web-view-name: Upload Page;
+    --web-view-id: Upload_Page;
+    --web-enable-deep-linking: true;
+}
+.Line_1 {
+    overflow: visible;
+    position: absolute;
+    width: 5px;
+    height: 1080px;
+    left: 599.5px;
+    top: 0.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Welcome_Admin__Class {
+    position: absolute;
+    left: 53px;
+    top: 124px;
+    overflow: hidden;
+    width: 458px;
+    height: 463px;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 84px;
+    color: rgba(112,112,112,1);
+}
+.Upload_Class {
+    position: absolute;
+    left: 689px;
+    top: 54px;
+    overflow: visible;
+    width: 267px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 84px;
+    color: rgba(112,112,112,1);
+}
+.Rectangle_2 {
+    position: absolute;
+    overflow: visible;
+    width: 1139px;
+    height: 258px;
+    left: 689px;
+    top: 195px;
+}
+.Line_2 {
+    overflow: visible;
+    position: absolute;
+    width: 1139px;
+    height: 5px;
+    left: 689.5px;
+    top: 154.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Icon_ionic_ios_cloud_upload_Class {
+    position: absolute;
+    width: 142.515px;
+    height: 124.701px;
+    left: 1187.148px;
+    top: 221.214px;
+    overflow: visible;
+}
+.Path_1 {
+    overflow: visible;
+    position: absolute;
+    width: 142.516px;
+    height: 89.072px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Path_2 {
+    overflow: visible;
+    position: absolute;
+    width: 7.237px;
+    height: 35.629px;
+    left: 67.639px;
+    top: 89.072px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Click_to_Upload__xlsx_File_Class {
+    position: absolute;
+    left: 1063px;
+    top: 395px;
+    overflow: visible;
+    width: 393px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: rgba(112,112,112,1);
+}
+.Schedule_Class {
+    position: absolute;
+    left: 689px;
+    top: 516px;
+    overflow: visible;
+    width: 351px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 84px;
+    color: rgba(112,112,112,1);
+}
+.Rectangle_9 {
+    position: absolute;
+    overflow: visible;
+    width: 1139px;
+    height: 311px;
+    left: 689px;
+    top: 711px;
+}
+.Line_6 {
+    overflow: visible;
+    position: absolute;
+    width: 1139px;
+    height: 5px;
+    left: 689.5px;
+    top: 616.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Icon_ionic_md_calendar {
+    overflow: visible;
+    position: absolute;
+    width: 142.664px;
+    height: 142.66px;
+    left: 1188px;
+    top: 749px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Click_Schedule_Send_Time_Class {
+    position: absolute;
+    left: 1049px;
+    top: 932px;
+    overflow: visible;
+    width: 421px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: rgba(112,112,112,1);
+}
+.Current_Send_Time__3_00pm_on_D_Class {
+    position: absolute;
+    left: 850px;
+    top: 657px;
+    overflow: visible;
+    width: 819px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: rgba(112,112,112,1);
+}
