@@ -34,7 +34,7 @@ CREATE TABLE Section
 
 CREATE TABLE Survey
 (
-	survey_id integer PRIMARY KEY,
+	survey_id integer PRIMARY KEY AUTO_INCREMENT,
 	section_id integer,
 	q_1a integer,
 	q_1b integer,
