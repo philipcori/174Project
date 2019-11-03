@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const connection = require('../model/database.js')
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart({ uploadDir: './uploads'});
+const bodyParser = require('body-parser');
+const xlsx = require('node-xlsx')
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,6 +30,19 @@ router.post('/submit', function(req, res) {
     else res.send(result);
   });
 });
+
+//upload api
+router.get('/api/upload', multipartMiddleware, (req, res) => {
+    var file = req.files.file
+    console.log('uploaded file with name ' + file.name)
+    console.log(file.type)
+    console.log(file)
+    //var workbook = xlsx.readFile('./uploads/')
+
+	res.json({
+        'message': 'File uploaded successfully'
+    });
+})
 
 /* test json for /submit
 {
