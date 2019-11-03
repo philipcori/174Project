@@ -32,11 +32,12 @@ router.post('/submit', function(req, res) {
 });
 
 //upload api
-router.get('/api/upload', multipartMiddleware, (req, res) => {
-    var file = req.files.file
-    console.log('uploaded file with name ' + file.name)
-    console.log(file.type)
-    console.log(file)
+router.post('/api/upload', multipartMiddleware, (req, res) => {
+   console.log(req);
+	// var file = req.files.file
+	// console.log(file)
+	// console.log('uploaded file with name ' + file.name)
+    // console.log(file.type)
     //var workbook = xlsx.readFile('./uploads/')
 
 	res.json({

@@ -15,7 +15,7 @@ export class DataTransferService {
     formData.append("uploadedFile", file[0], file[0].name);
     console.log(formData)
 
-    this.http.post('/upload', formData).subscribe((response) => {
+    this.http.post('/api/upload', formData).subscribe((response) => {
       console.log('response received is ', response);
   })
   }
