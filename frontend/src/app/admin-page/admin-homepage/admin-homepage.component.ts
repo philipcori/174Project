@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTransferService } from "src/app/data-transfer.service"
 
 @Component({
   selector: 'app-admin-homepage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
   }
 
+  uploadFile(file:File){
+    this.dataTransferService.uploadFile(file);
+  }
 }
