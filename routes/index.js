@@ -68,7 +68,7 @@ router.post('/api/upload', uploadService.single('uploadedFile'), function(req, r
 	res.sendStatus(200)
 }) 
 
-router.post('/submit', function(req, res) {
+router.post('/api/submit', function(req, res) {
   const body = req.body;
   connection.query(
     'INSERT INTO Survey (section_id, q_1a, q_1b, q_1c, q_1d, q_1e, q_1f, q_2a, q_2b, q_2c, q_2d, q_2e, q_2f, q_3a, q_3b, q_3c, q_3d, q_4a, q_4b, q_4c, q_5a) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', 

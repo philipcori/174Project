@@ -65,3 +65,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     top: 1016px;
     overflow: visible;
 }
+
+.Page-Title {
+    position: absolute;
+    left: 689px;
+    top: 65px;
+    overflow: visible;
+    width: 477px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2rem;
+    color: rgba(112,112,112,1);
+}

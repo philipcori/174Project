@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTransferService } from 'src/app/data-transfer.service';
 
 @Component({
   selector: 'app-survey-homepage',
@@ -163,6 +164,12 @@ export class SurveyHomepageComponent implements OnInit {
     }
   ]
 
+  constructor(private dataTransferService: DataTransferService) { }
+
+  ngOnInit() {
+  }
+
+
   changeChoice(answer){
     console.log(answer);
   }
@@ -177,9 +184,7 @@ export class SurveyHomepageComponent implements OnInit {
 
   clickSubmit(){
     let submission = {
-      student_id: "",
-      survey_id: "",
-      section_id: ""
+      section_id: "123456"
     }
     this.questionPages.forEach(questionPage =>{
       questionPage.questions.forEach(question =>{
@@ -188,13 +193,9 @@ export class SurveyHomepageComponent implements OnInit {
     })
 
     // TODO - validate
-    // TODO - HTTP request
+
     console.log(submission);
-  }
-
-  constructor() { }
-
-  ngOnInit() {
+    this.dataTransferService.submitSurvey(submission);    
   }
 
 }

@@ -17,6 +17,12 @@ export class DataTransferService {
 
     this.http.post('/api/upload', formData).subscribe((response) => {
       console.log('response received is ', response);
-  })
+    })
+  }
+
+  submitSurvey(submission){
+    this.http.post('/api/submit',submission).subscribe((response) => {
+      console.log('response received is ', response);
+    })
   }
 }
