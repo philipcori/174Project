@@ -11,79 +11,54 @@
 		</path>
     </svg>
     <ng-container>
-        <div class="ID2__Lab_Instructor___Alex_Jam_Class">
+        <div class="Survey-Page-Title">
             <span>{{currentPageIndex+1}}. {{questionPages[currentPageIndex].title}}</span>
         </div>
         <div class="Repeat_Grid_9_Class">
-            <div class="Group_23_Class">
-                <svg class="Rectangle_8">
-                    <rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
-                    </rect>
-                </svg>
-                <div class="The_lab_instructor_was_support_Class">
-                    <span>The lab instructor was supportive.</span>
+            <div class="Survey_Question" *ngFor="let question of questionPages[currentPageIndex].questions;">
+                <label class="Question-Title">{{question.text}}</label>
+                <div class = "Scale-Question" *ngIf="question.type == qstTypeScale">
+                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer" (change)="changeChoice(question.answer)">
+                        <mat-radio-button class="Multiple-Choice" *ngFor="let scaleOption of scaleOptions" [value]="scaleOption">
+                            {{scaleOption}}
+                        </mat-radio-button>   
+                    </mat-radio-group>
                 </div>
-                <div class="Repeat_Grid_8_Class">
-                    <div class="Repeat_Grid_8_0_Class">
-                        <svg class="Ellipse_1">
-                            <ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-                            </ellipse>
-                        </svg>
-                        <div class="ID1_Class">
-                            <span>1</span>
-                        </div>
-                    </div>
-                    <div class="Repeat_Grid_8_1_Class">
-                        <svg class="Ellipse_1_A3_Ellipse_2">
-                            <ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_2_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-                            </ellipse>
-                        </svg>
-                        <div class="ID2_Class">
-                            <span>2</span>
-                        </div>
-                    </div>
-                    <div class="Repeat_Grid_8_2_Class">
-                        <svg class="Ellipse_1_A3_Ellipse_3">
-                            <ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_3_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-                            </ellipse>
-                        </svg>
-                        <div class="ID3_Class">
-                            <span>3</span>
-                        </div>
-                    </div>
-                    <div class="Repeat_Grid_8_3_Class">
-                        <svg class="Ellipse_1_A3_Ellipse_4">
-                            <ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_4_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-                            </ellipse>
-                        </svg>
-                        <div class="ID4_Class">
-                            <span>4</span>
-                        </div>
-                    </div>
-                    <div class="Repeat_Grid_8_4_Class">
-                        <svg class="Ellipse_1_A3_Ellipse_5">
-                            <ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_5_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-                            </ellipse>
-                        </svg>
-                        <div class="ID5_Class">
-                            <span>5</span>
-                        </div>
-                    </div>
+                <div class = "Response_Question" *ngIf="question.type == qstTypeResponse">
+                    <mat-form-field class="Free-Response">
+                        <mat-label>Please enter your response</mat-label>
+                        <textarea matInput
+                                    [(ngModel)]="question.answer"
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="12"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class = "Hours_Question" *ngIf="question.type == qstTypeHours">
+                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer" (change)="changeChoice(question.answer)">
+                        <mat-radio-button class="Multiple-Choice" *ngFor="let hoursOption of hoursOptions" [value]="hoursOption">
+                            {{hoursOption}}
+                        </mat-radio-button>   
+                    </mat-radio-group>
                 </div>
             </div>
         </div>
     </ng-container>
     <div class="Group_21_Class">
-        <button mat-flat-button (click)="changePage(-1)">
+        <button mat-flat-button *ngIf="currentPageIndex > 0" (click)="changePage(-1)">
             <i class="material-icons">keyboard_arrow_left</i>
             Previous
         </button>
     </div>
     <div class="Group_22_Class">
-        <button mat-flat-button (click)="changePage(1)">
+        <button mat-flat-button *ngIf="currentPageIndex < questionPages.length-1" (click)="changePage(1)">
             Next
             <i class="material-icons">keyboard_arrow_right</i>
         </button>
-        
+        <button mat-flat-button *ngIf="currentPageIndex >= questionPages.length-1" (click)="clickSubmit()">
+            Submit
+            <i class="material-icons">done</i>
+        </button>
     </div>
 </div>

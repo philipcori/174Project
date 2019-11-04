@@ -2,3 +2,66 @@
 @font-face { font-family: "Segoe-UI"; src: url("./assets/fonts/Segoe-UI.ttf"); }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.Repeat_Grid_9_Class {
+    position: absolute;
+    width: 1166px;
+    height: 852px;
+    left: 689px;
+    top: 145px;
+    overflow: scroll;
+}
+
+.Survey-Question {
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgba(112,112,112,1);
+}
+
+.Question-Title {
+    font-size: 2rem;
+    font-family: Segoe-UI;
+    color: rgba(112,112,112,1);
+}
+
+.Multiple-Choices{
+    margin-left: 3rem;
+}
+.Multiple-Choice{
+    font-size: 1.8rem;
+    font-family: Segoe-UI;
+    color: rgba(112,112,112,1);
+    margin-right: 8rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.Free-Response {
+    margin-top: .6rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    width: 40rem;
+    font-family: Segoe-UI;
+    font-size: 1.2rem;
+    color: rgba(112,112,112,1);
+}
+
+.Group_22_Class {
+    position: absolute;
+    width: 202px;
+    height: 52px;
+    left: 1630px;
+    top: 1015px;
+    overflow: visible;
+}
+.Group_21_Class {
+    position: absolute;
+    width: 202px;
+    height: 52px;
+    left: 1408px;
+    top: 1016px;
+    overflow: visible;
+}

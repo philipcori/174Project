@@ -1,324 +1,87 @@
-<div id="Survey_Page" class="Survey_Page_Class ">
+<div id="Results_Page" class="Results_Page_Class ">
 	<svg class="Line_1" viewBox="0 0 5 1080">
 		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="5px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_1_Class" d="M 0 0 L 0 1080">
 		</path>
 	</svg>
-	<div class="Survey_for_COEN_174__57975___Class">
-		<span>Survey for COEN 174:<br/>57975<br/></span><br>
+	<div class="COEN_174__57975__Survey_Result_Class">
+		<span>COEN 174:<br/>57975<br/><br/>Survey Results</span>
 	</div>
 	<svg class="Line_2" viewBox="0 0 1165 3">
 		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_2_Class" d="M 0 0 L 1165 0">
 		</path>
 	</svg>
-	<div class="ID2__Lab_Instructor___Alex_Jam_Class">
-		<span>2. Lab Instructor - Alex James</span>
+	<svg class="Line_5" viewBox="0 0 1165 3">
+		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_5_Class" d="M 0 0 L 1165 0">
+		</path>
+	</svg>
+	<div class="Group_17_Class">
+		<div class="Group_16_Class">
+			<svg class="Rectangle_5">
+				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_5_Class" rx="0" ry="0" x="0" y="0" width="138" height="52">
+				</rect>
+			</svg>
+			<div class="Back_Class">
+				<span>Back</span>
+			</div>
+			<svg class="Icon_ionic_ios_arrow_back" viewBox="11.251 6.194 15.78 27.602">
+				<path fill="rgba(112,112,112,1)" class="Icon_ionic_ios_arrow_back_Class" d="M 16.00764274597168 19.99130249023438 L 26.45165824890137 9.555500984191895 C 27.22407531738281 8.783087730407715 27.22407531738281 7.534078121185303 26.45165824890137 6.769881725311279 C 25.67924690246582 5.997467994689941 24.43024063110352 6.005685806274414 23.6578254699707 6.769881725311279 L 11.82510566711426 18.59438323974609 C 11.07734298706055 19.3421459197998 11.06090927124023 20.5418529510498 11.76758480072021 21.31426620483398 L 23.64960861206055 33.22094345092773 C 24.03581428527832 33.60714721679688 24.5452823638916 33.796142578125 25.04652786254883 33.796142578125 C 25.54777145385742 33.796142578125 26.05723571777344 33.60714721679688 26.44344520568848 33.22094345092773 C 27.21586227416992 32.44852447509766 27.21586227416992 31.19952011108398 26.44344520568848 30.43532180786133 L 16.00764274597168 19.99130249023438 Z">
+				</path>
+			</svg>
+		</div>
 	</div>
-	<div class="Group_21_Class">
-		<svg class="Rectangle_5">
-			<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_5_Class" rx="0" ry="0" x="0" y="0" width="202" height="52">
-			</rect>
-		</svg>
-		<div class="Previous_Class">
-			<span>Previous</span>
+	<ng-container>
+			<div class="Survey-Page-Title">
+				<span>{{currentPageIndex+1}}. {{questionPages[currentPageIndex].title}}</span>
+			</div>
+			<div class="Repeat_Grid_9_Class">
+				<div class="Survey_Question" *ngFor="let question of questionPages[currentPageIndex].questions;">
+					<label class="Question-Title">{{question.text}}</label>
+					<div class = "Scale-Question" *ngIf="question.type == qstTypeScale">
+						scale
+					</div>
+					<div class = "Response_Question" *ngIf="question.type == qstTypeResponse">
+						free response
+					</div>
+					<div class = "Hours_Question" *ngIf="question.type == qstTypeHours">
+						hours
+					</div>
+				</div>
+			</div>
+		</ng-container>
+		<div class="Group_21_Class">
+			<button mat-flat-button *ngIf="currentPageIndex > 0" (click)="changePage(-1)">
+				<i class="material-icons">keyboard_arrow_left</i>
+				Previous
+			</button>
 		</div>
-		<svg class="Icon_ionic_ios_arrow_back" viewBox="11.251 6.194 15.78 27.602">
-			<path fill="rgba(112,112,112,1)" class="Icon_ionic_ios_arrow_back_Class" d="M 16.00764274597168 19.99130249023438 L 26.45165824890137 9.555500984191895 C 27.22407531738281 8.783087730407715 27.22407531738281 7.534078121185303 26.45165824890137 6.769881725311279 C 25.67924690246582 5.997467994689941 24.43024063110352 6.005685806274414 23.6578254699707 6.769881725311279 L 11.82510566711426 18.59438323974609 C 11.07734298706055 19.3421459197998 11.06090927124023 20.5418529510498 11.76758480072021 21.31426620483398 L 23.64960861206055 33.22094345092773 C 24.03581428527832 33.60714721679688 24.5452823638916 33.796142578125 25.04652786254883 33.796142578125 C 25.54777145385742 33.796142578125 26.05723571777344 33.60714721679688 26.44344520568848 33.22094345092773 C 27.21586227416992 32.44852447509766 27.21586227416992 31.19952011108398 26.44344520568848 30.43532180786133 L 16.00764274597168 19.99130249023438 Z">
-			</path>
-		</svg>
+		<div class="Group_22_Class">
+			<button mat-flat-button *ngIf="currentPageIndex < questionPages.length-1" (click)="changePage(1)">
+				Next
+				<i class="material-icons">keyboard_arrow_right</i>
+			</button>
+	<div class="ID1__Learning_from_Labs_Class">
+		<span>1. Learning from Labs</span>
 	</div>
-	<div class="Group_22_Class">
-		<svg class="Rectangle_5_A3_Rectangle_2">
-			<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_5_A3_Rectangle_2_Class" rx="0" ry="0" x="0" y="0" width="202" height="52">
-			</rect>
-		</svg>
-		<div class="Continue_Class">
-			<span>Continue</span>
-		</div>
-		<svg class="Icon_ionic_ios_arrow_back_A3_Path_2" viewBox="11.251 6.194 15.78 27.602">
-			<path fill="rgba(112,112,112,1)" class="Icon_ionic_ios_arrow_back_A3_Path_2_Class" d="M 16.00764274597168 19.99130249023438 L 26.45165824890137 9.555500984191895 C 27.22407531738281 8.783087730407715 27.22407531738281 7.534078121185303 26.45165824890137 6.769881725311279 C 25.67924690246582 5.997467994689941 24.43024063110352 6.005685806274414 23.6578254699707 6.769881725311279 L 11.82510566711426 18.59438323974609 C 11.07734298706055 19.3421459197998 11.06090927124023 20.5418529510498 11.76758480072021 21.31426620483398 L 23.64960861206055 33.22094345092773 C 24.03581428527832 33.60714721679688 24.5452823638916 33.796142578125 25.04652786254883 33.796142578125 C 25.54777145385742 33.796142578125 26.05723571777344 33.60714721679688 26.44344520568848 33.22094345092773 C 27.21586227416992 32.44852447509766 27.21586227416992 31.19952011108398 26.44344520568848 30.43532180786133 L 16.00764274597168 19.99130249023438 Z">
-			</path>
-		</svg>
-	</div>
-	<div class="Repeat_Grid_9_Class">
-		<div class="Group_23_Class">
-			<svg class="Rectangle_8">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
+		<!-- <div class="Group_20_A2_Group_15_Class">
+			<svg class="Rectangle_8_A2_Rectangle_8">
+				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_A2_Rectangle_8_Class" rx="0" ry="0" x="0" y="0" width="1166" height="85">
 				</rect>
 			</svg>
-			<div class="The_lab_instructor_was_support_Class">
-				<span>The lab instructor was supportive.</span>
+			<div class="The_lab_instructor_was_support_A2_Text_23_Class">
+				<span>The lab instructor was supportive</span>
 			</div>
-			<div class="Repeat_Grid_8_Class">
-				<div class="Repeat_Grid_8_0_Class">
-					<svg class="Ellipse_1">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID1_Class">
-						<span>1</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_1_Class">
-					<svg class="Ellipse_1_A3_Ellipse_2">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_2_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID2_Class">
-						<span>2</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_2_Class">
-					<svg class="Ellipse_1_A3_Ellipse_3">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_3_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID3_Class">
-						<span>3</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_3_Class">
-					<svg class="Ellipse_1_A3_Ellipse_4">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_4_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID4_Class">
-						<span>4</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_4_Class">
-					<svg class="Ellipse_1_A3_Ellipse_5">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_5_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID5_Class">
-						<span>5</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="Group_23_A3_Group_9_Class">
-			<svg class="Rectangle_8_A3_Rectangle_4">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_A3_Rectangle_4_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
-				</rect>
+			<svg class="Line_4_A2_Line_10" viewBox="0 0 1 84">
+				<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_4_A2_Line_10_Class" d="M 0 0 L 0 84">
+				</path>
 			</svg>
-			<div class="The_lab_instructor_was_support_A3_Text_11_Class">
-				<span>The lab instructor was supportive.</span>
-			</div>
-			<div class="Repeat_Grid_8_A3_RepeatGrid_3_Class">
-				<div class="Repeat_Grid_8_A3_RepeatGrid_3_0_Class">
-					<svg class="Ellipse_1_A3_Ellipse_6">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_6_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID1_A3_Text_12_Class">
-						<span>1</span>
-					</div>
+			<div class="Group_19_A2_Group_16_Class">
+				<div class="Average_A2_Text_24_Class">
+					<span>Average</span>
 				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_3_1_Class">
-					<svg class="Ellipse_1_A3_Ellipse_7">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_7_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID2_A3_Text_13_Class">
-						<span>2</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_3_2_Class">
-					<svg class="Ellipse_1_A3_Ellipse_8">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_8_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID3_A3_Text_14_Class">
-						<span>3</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_3_3_Class">
-					<svg class="Ellipse_1_A3_Ellipse_9">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_9_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID4_A3_Text_15_Class">
-						<span>4</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_3_4_Class">
-					<svg class="Ellipse_1_A3_Ellipse_10">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_10_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID5_A3_Text_16_Class">
-						<span>5</span>
-					</div>
+				<div class="ID4_2_5_A2_Text_25_Class">
+					<span>4.2/5</span>
 				</div>
 			</div>
-		</div>
-		<div class="Group_23_A3_Group_15_Class">
-			<svg class="Rectangle_8_A3_Rectangle_5">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_A3_Rectangle_5_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
-				</rect>
-			</svg>
-			<div class="The_lab_instructor_was_support_A3_Text_17_Class">
-				<span>The lab instructor was supportive.</span>
-			</div>
-			<div class="Repeat_Grid_8_A3_RepeatGrid_4_Class">
-				<div class="Repeat_Grid_8_A3_RepeatGrid_4_0_Class">
-					<svg class="Ellipse_1_A3_Ellipse_11">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_11_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID1_A3_Text_18_Class">
-						<span>1</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_4_1_Class">
-					<svg class="Ellipse_1_A3_Ellipse_12">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_12_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID2_A3_Text_19_Class">
-						<span>2</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_4_2_Class">
-					<svg class="Ellipse_1_A3_Ellipse_13">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_13_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID3_A3_Text_20_Class">
-						<span>3</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_4_3_Class">
-					<svg class="Ellipse_1_A3_Ellipse_14">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_14_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID4_A3_Text_21_Class">
-						<span>4</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_4_4_Class">
-					<svg class="Ellipse_1_A3_Ellipse_15">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_15_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID5_A3_Text_22_Class">
-						<span>5</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="Group_23_A3_Group_21_Class">
-			<svg class="Rectangle_8_A3_Rectangle_6">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_A3_Rectangle_6_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
-				</rect>
-			</svg>
-			<div class="The_lab_instructor_was_support_A3_Text_23_Class">
-				<span>The lab instructor was supportive.</span>
-			</div>
-			<div class="Repeat_Grid_8_A3_RepeatGrid_5_Class">
-				<div class="Repeat_Grid_8_A3_RepeatGrid_5_0_Class">
-					<svg class="Ellipse_1_A3_Ellipse_16">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_16_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID1_A3_Text_24_Class">
-						<span>1</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_5_1_Class">
-					<svg class="Ellipse_1_A3_Ellipse_17">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_17_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID2_A3_Text_25_Class">
-						<span>2</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_5_2_Class">
-					<svg class="Ellipse_1_A3_Ellipse_18">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_18_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID3_A3_Text_26_Class">
-						<span>3</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_5_3_Class">
-					<svg class="Ellipse_1_A3_Ellipse_19">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_19_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID4_A3_Text_27_Class">
-						<span>4</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_5_4_Class">
-					<svg class="Ellipse_1_A3_Ellipse_20">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_20_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID5_A3_Text_28_Class">
-						<span>5</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="Group_23_A3_Group_27_Class">
-			<svg class="Rectangle_8_A3_Rectangle_7">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_8_A3_Rectangle_7_Class" rx="0" ry="0" x="0" y="0" width="1166" height="179">
-				</rect>
-			</svg>
-			<div class="The_lab_instructor_was_support_A3_Text_29_Class">
-				<span>The lab instructor was supportive.</span>
-			</div>
-			<div class="Repeat_Grid_8_A3_RepeatGrid_6_Class">
-				<div class="Repeat_Grid_8_A3_RepeatGrid_6_0_Class">
-					<svg class="Ellipse_1_A3_Ellipse_21">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_21_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID1_A3_Text_30_Class">
-						<span>1</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_6_1_Class">
-					<svg class="Ellipse_1_A3_Ellipse_22">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_22_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID2_A3_Text_31_Class">
-						<span>2</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_6_2_Class">
-					<svg class="Ellipse_1_A3_Ellipse_23">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_23_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID3_A3_Text_32_Class">
-						<span>3</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_6_3_Class">
-					<svg class="Ellipse_1_A3_Ellipse_24">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_24_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID4_A3_Text_33_Class">
-						<span>4</span>
-					</div>
-				</div>
-				<div class="Repeat_Grid_8_A3_RepeatGrid_6_4_Class">
-					<svg class="Ellipse_1_A3_Ellipse_25">
-						<ellipse fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Ellipse_1_A3_Ellipse_25_Class" rx="17.5" ry="17.5" cx="17.5" cy="17.5">
-						</ellipse>
-					</svg>
-					<div class="ID5_A3_Text_34_Class">
-						<span>5</span>
-					</div>
-				</div>
-			</div>
-		</div>
+		</div> -->
 	</div>
 </div>

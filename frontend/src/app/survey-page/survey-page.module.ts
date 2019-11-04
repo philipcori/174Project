@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SurveyPageRoutingModule } from './survey-page-routing.module';
 import { SurveyHomepageComponent } from './survey-homepage/survey-homepage.component';
 import { MatButtonModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { MatButtonModule } from '@angular/material';
   imports: [
     CommonModule,
     SurveyPageRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatInputModule,
+    FormsModule
   ]
 })
 export class SurveyPageModule { }

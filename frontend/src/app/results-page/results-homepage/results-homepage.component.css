@@ -1,10 +1,10 @@
 .mediaViewInfo {
-    --web-view-name: Survey Page;
-    --web-view-id: Survey_Page;
+    --web-view-name: Results Page;
+    --web-view-id: Results_Page;
     --web-enable-deep-linking: true;
 }
 :root {
-    --web-view-ids: Survey_Page;
+    --web-view-ids: Results_Page;
 }
 * {
     margin: 0;
@@ -12,7 +12,7 @@
     box-sizing: border-box;
     border: none;
 }
-.Survey_Page_Class {
+.Results_Page_Class {
     position: absolute;
     box-sizing: border-box;
     background: #E5E5E5;
@@ -20,8 +20,8 @@
     height: 1080px;
     background-color: rgba(255,255,255,1);
     overflow: hidden;
-    --web-view-name: Survey Page;
-    --web-view-id: Survey_Page;
+    --web-view-name: Results Page;
+    --web-view-id: Results_Page;
     --web-enable-deep-linking: true;
 }
 .Line_1 {
@@ -33,7 +33,7 @@
     top: 0.5px;
     transform: matrix(1,0,0,1,0,0);
 }
-.Survey_for_COEN_174__57975___Class {
+.COEN_174__57975__Survey_Result_Class {
     position: absolute;
     left: 53px;
     top: 120px;
@@ -41,7 +41,7 @@
     width: 458px;
     height: 623px;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 84px;
@@ -56,45 +56,48 @@
     top: 121.5px;
     transform: matrix(1,0,0,1,0,0);
 }
-.ID2__Lab_Instructor___Alex_Jam_Class {
-    position: absolute;
-    left: 689px;
-    top: 65px;
+.Line_5 {
     overflow: visible;
-    width: 477px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    color: rgba(112,112,112,1);
-}
-.Group_21_Class {
     position: absolute;
-    width: 202px;
+    width: 1165px;
+    height: 3px;
+    left: 690.5px;
+    top: 679.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Group_17_Class {
+    position: absolute;
+    width: 138px;
     height: 52px;
-    left: 1408px;
-    top: 1016px;
+    left: 39px;
+    top: 33px;
+    overflow: visible;
+}
+.Group_16_Class {
+    position: absolute;
+    width: 138px;
+    height: 52px;
+    left: 0px;
+    top: 0px;
     overflow: visible;
 }
 .Rectangle_5 {
     position: absolute;
     overflow: visible;
-    width: 202px;
+    width: 138px;
     height: 52px;
     left: 0px;
     top: 0px;
 }
-.Previous_Class {
+.Back_Class {
     position: absolute;
-    left: 50px;
+    left: 42px;
     top: 10px;
     overflow: visible;
-    width: 141px;
+    width: 81px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
@@ -103,51 +106,55 @@
 .Icon_ionic_ios_arrow_back {
     overflow: visible;
     position: absolute;
-    width: 15.78px;
-    height: 27.603px;
+    width: 15.781px;
+    height: 27.602px;
     left: 15px;
     top: 12px;
     transform: matrix(1,0,0,1,0,0);
 }
-.Group_22_Class {
+.ID1__Learning_from_Labs_Class {
     position: absolute;
-    width: 202px;
-    height: 52px;
-    left: 1630px;
-    top: 1015px;
+    left: 689px;
+    top: 65px;
     overflow: visible;
-}
-.Rectangle_5_A3_Rectangle_2 {
-    position: absolute;
-    overflow: visible;
-    width: 202px;
-    height: 52px;
-    left: 0px;
-    top: 0px;
-}
-.Continue_Class {
-    position: absolute;
-    left: 12px;
-    top: 11px;
-    overflow: visible;
-    width: 145px;
+    width: 351px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
     color: rgba(112,112,112,1);
 }
-.Icon_ionic_ios_arrow_back_A3_Path_2 {
-    overflow: visible;
+.ID2__Lab_Instructor___Alex_Jam_Class {
     position: absolute;
-    width: 15.78px;
-    height: 27.602px;
-    transform: translate(-34px, -28px) matrix(1,0,0,1,205,40) rotate(180deg);
-    transform-origin: center;
+    left: 690px;
+    top: 623px;
+    overflow: visible;
+    width: 477px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: rgba(112,112,112,1);
+}
+.Repeat_Grid_6_Class {
+    position: absolute;
+    width: 1166px;
+    height: 418.5px;
+    left: 689px;
+    top: 145px;
+    overflow: hidden;
+}
+.Group_20_Class {
+    position: absolute;
+    width: 1166px;
+    height: 87.5px;
     left: 0px;
     top: 0px;
+    overflow: visible;
 }
 .Repeat_Grid_9_Class {
     position: absolute;
@@ -155,21 +162,321 @@
     height: 852px;
     left: 689px;
     top: 145px;
-    overflow: hidden;
-}
-.Group_23_Class {
-    position: absolute;
-    width: 1166px;
-    height: 179px;
-    left: 0px;
-    top: 0px;
-    overflow: visible;
+    overflow: scroll;
 }
 .Rectangle_8 {
     position: absolute;
     overflow: visible;
     width: 1166px;
-    height: 179px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+}
+.The_Lab_helped_me_to_understan_Class {
+    position: absolute;
+    left: 27px;
+    top: 32px;
+    overflow: visible;
+    width: 715px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.Line_4 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Group_19_Class {
+    position: absolute;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
+    overflow: visible;
+}
+.Average_Class {
+    position: absolute;
+    left: 0px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.ID3_7_5_Class {
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    overflow: visible;
+    width: 108px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: rgba(112,112,112,1);
+}
+.Group_20_A2_Group_5_Class {
+    position: absolute;
+    width: 1166px;
+    height: 87.5px;
+    left: 0px;
+    top: 108px;
+    overflow: visible;
+}
+.Rectangle_8_A2_Rectangle_3 {
+    position: absolute;
+    overflow: visible;
+    width: 1166px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+}
+.The_Lab_helped_me_to_understan_A2_Text_8_Class {
+    position: absolute;
+    left: 27px;
+    top: 32px;
+    overflow: visible;
+    width: 715px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.Line_4_A2_Line_5 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Group_19_A2_Group_6_Class {
+    position: absolute;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
+    overflow: visible;
+}
+.Average_A2_Text_9_Class {
+    position: absolute;
+    left: 0px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.ID3_7_5_A2_Text_10_Class {
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    overflow: visible;
+    width: 108px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: rgba(112,112,112,1);
+}
+.Group_20_A2_Group_7_Class {
+    position: absolute;
+    width: 1166px;
+    height: 87.5px;
+    left: 0px;
+    top: 216px;
+    overflow: visible;
+}
+.Rectangle_8_A2_Rectangle_4 {
+    position: absolute;
+    overflow: visible;
+    width: 1166px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+}
+.The_Lab_helped_me_to_understan_A2_Text_11_Class {
+    position: absolute;
+    left: 27px;
+    top: 32px;
+    overflow: visible;
+    width: 715px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.Line_4_A2_Line_6 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Group_19_A2_Group_8_Class {
+    position: absolute;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
+    overflow: visible;
+}
+.Average_A2_Text_12_Class {
+    position: absolute;
+    left: 0px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.ID3_7_5_A2_Text_13_Class {
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    overflow: visible;
+    width: 108px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: rgba(112,112,112,1);
+}
+.Group_20_A2_Group_9_Class {
+    position: absolute;
+    width: 1166px;
+    height: 87.5px;
+    left: 0px;
+    top: 324px;
+    overflow: visible;
+}
+.Rectangle_8_A2_Rectangle_5 {
+    position: absolute;
+    overflow: visible;
+    width: 1166px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
+}
+.The_Lab_helped_me_to_understan_A2_Text_14_Class {
+    position: absolute;
+    left: 27px;
+    top: 32px;
+    overflow: visible;
+    width: 715px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.Line_4_A2_Line_7 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+.Group_19_A2_Group_10_Class {
+    position: absolute;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
+    overflow: visible;
+}
+.Average_A2_Text_15_Class {
+    position: absolute;
+    left: 0px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+.ID3_7_5_A2_Text_16_Class {
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    overflow: visible;
+    width: 108px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    color: rgba(112,112,112,1);
+}
+.Repeat_Grid_7_Class {
+    position: absolute;
+    width: 1166px;
+    height: 319.5px;
+    left: 690px;
+    top: 703px;
+    overflow: hidden;
+}
+.Group_20_A2_Group_11_Class {
+    position: absolute;
+    width: 1166px;
+    height: 87.5px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+.Rectangle_8_A2_Rectangle_6 {
+    position: absolute;
+    overflow: visible;
+    width: 1166px;
+    height: 85px;
     left: 0px;
     top: 0px;
 }
@@ -178,922 +485,207 @@
     left: 27px;
     top: 32px;
     overflow: visible;
-    width: 450px;
+    width: 441px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_Class {
+.Line_4_A2_Line_8 {
+    overflow: visible;
     position: absolute;
-    width: 964px;
-    height: 88px;
-    left: 101px;
-    top: 72px;
-    overflow: hidden;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
 }
-.Repeat_Grid_8_0_Class {
+.Group_19_A2_Group_12_Class {
     position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 0px;
-    top: 16px;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
     overflow: visible;
 }
-.Ellipse_1 {
+.Average_A2_Text_18_Class {
     position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
     left: 0px;
-    top: 37px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
 }
-.ID1_Class {
+.ID4_2_5_Class {
     position: absolute;
-    left: 8px;
+    left: 122px;
     top: 0px;
     overflow: visible;
-    width: 18px;
+    width: 108px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
+    font-weight: bold;
+    font-size: 48px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_1_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 230px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_2 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID2_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_2_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 460px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_3 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID3_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_3_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 690px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_4 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID4_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_4_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 920px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_5 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID5_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Group_23_A3_Group_9_Class {
+.Group_20_A2_Group_13_Class {
     position: absolute;
     width: 1166px;
-    height: 179px;
+    height: 87.5px;
     left: 0px;
-    top: 199px;
+    top: 108px;
     overflow: visible;
 }
-.Rectangle_8_A3_Rectangle_4 {
+.Rectangle_8_A2_Rectangle_7 {
     position: absolute;
     overflow: visible;
     width: 1166px;
-    height: 179px;
+    height: 85px;
     left: 0px;
     top: 0px;
 }
-.The_lab_instructor_was_support_A3_Text_11_Class {
+.The_lab_instructor_was_support_A2_Text_20_Class {
     position: absolute;
     left: 27px;
     top: 32px;
     overflow: visible;
-    width: 450px;
+    width: 441px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_A3_RepeatGrid_3_Class {
+.Line_4_A2_Line_9 {
+    overflow: visible;
     position: absolute;
-    width: 964px;
-    height: 88px;
-    left: 101px;
-    top: 72px;
-    overflow: hidden;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
 }
-.Repeat_Grid_8_A3_RepeatGrid_3_0_Class {
+.Group_19_A2_Group_14_Class {
     position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 0px;
-    top: 16px;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
     overflow: visible;
 }
-.Ellipse_1_A3_Ellipse_6 {
+.Average_A2_Text_21_Class {
     position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
     left: 0px;
-    top: 37px;
+    top: 12px;
+    overflow: visible;
+    width: 112px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
 }
-.ID1_A3_Text_12_Class {
+.ID4_2_5_A2_Text_22_Class {
     position: absolute;
-    left: 8px;
+    left: 122px;
     top: 0px;
     overflow: visible;
-    width: 18px;
+    width: 108px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
+    font-weight: bold;
+    font-size: 48px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_A3_RepeatGrid_3_1_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 230px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_7 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID2_A3_Text_13_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_3_2_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 460px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_8 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID3_A3_Text_14_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_3_3_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 690px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_9 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID4_A3_Text_15_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_3_4_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 920px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_10 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID5_A3_Text_16_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Group_23_A3_Group_15_Class {
+.Group_20_A2_Group_15_Class {
     position: absolute;
     width: 1166px;
-    height: 179px;
+    height: 87.5px;
     left: 0px;
-    top: 398px;
+    top: 216px;
     overflow: visible;
 }
-.Rectangle_8_A3_Rectangle_5 {
+.Rectangle_8_A2_Rectangle_8 {
     position: absolute;
     overflow: visible;
     width: 1166px;
-    height: 179px;
+    height: 85px;
     left: 0px;
     top: 0px;
 }
-.The_lab_instructor_was_support_A3_Text_17_Class {
+.The_lab_instructor_was_support_A2_Text_23_Class {
     position: absolute;
     left: 27px;
     top: 32px;
     overflow: visible;
-    width: 450px;
+    width: 441px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_A3_RepeatGrid_4_Class {
+.Line_4_A2_Line_10 {
+    overflow: visible;
     position: absolute;
-    width: 964px;
-    height: 88px;
-    left: 101px;
-    top: 72px;
-    overflow: hidden;
+    width: 1px;
+    height: 84px;
+    left: 869.5px;
+    top: 3.5px;
+    transform: matrix(1,0,0,1,0,0);
 }
-.Repeat_Grid_8_A3_RepeatGrid_4_0_Class {
+.Group_19_A2_Group_16_Class {
     position: absolute;
-    width: 35px;
-    height: 72px;
+    width: 229px;
+    height: 48px;
+    left: 895px;
+    top: 26px;
+    overflow: visible;
+}
+.Average_A2_Text_24_Class {
+    position: absolute;
     left: 0px;
-    top: 16px;
+    top: 12px;
     overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_11 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID1_A3_Text_18_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
+    width: 112px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
     color: rgba(112,112,112,1);
 }
-.Repeat_Grid_8_A3_RepeatGrid_4_1_Class {
+.ID4_2_5_A2_Text_25_Class {
     position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 230px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_12 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID2_A3_Text_19_Class {
-    position: absolute;
-    left: 8px;
+    left: 122px;
     top: 0px;
     overflow: visible;
-    width: 18px;
+    width: 108px;
     white-space: nowrap;
     text-align: left;
-    font-family: Segoe-UI;
+    font-family: Segoe UI;
     font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_4_2_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 460px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_13 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID3_A3_Text_20_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_4_3_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 690px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_14 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID4_A3_Text_21_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_4_4_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 920px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_15 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID5_A3_Text_22_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Group_23_A3_Group_21_Class {
-    position: absolute;
-    width: 1166px;
-    height: 179px;
-    left: 0px;
-    top: 597px;
-    overflow: visible;
-}
-.Rectangle_8_A3_Rectangle_6 {
-    position: absolute;
-    overflow: visible;
-    width: 1166px;
-    height: 179px;
-    left: 0px;
-    top: 0px;
-}
-.The_lab_instructor_was_support_A3_Text_23_Class {
-    position: absolute;
-    left: 27px;
-    top: 32px;
-    overflow: visible;
-    width: 450px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_Class {
-    position: absolute;
-    width: 964px;
-    height: 88px;
-    left: 101px;
-    top: 72px;
-    overflow: hidden;
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_0_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 0px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_16 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID1_A3_Text_24_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_1_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 230px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_17 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID2_A3_Text_25_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_2_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 460px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_18 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID3_A3_Text_26_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_3_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 690px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_19 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID4_A3_Text_27_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_5_4_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 920px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_20 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID5_A3_Text_28_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Group_23_A3_Group_27_Class {
-    position: absolute;
-    width: 1166px;
-    height: 179px;
-    left: 0px;
-    top: 796px;
-    overflow: visible;
-}
-.Rectangle_8_A3_Rectangle_7 {
-    position: absolute;
-    overflow: visible;
-    width: 1166px;
-    height: 179px;
-    left: 0px;
-    top: 0px;
-}
-.The_lab_instructor_was_support_A3_Text_29_Class {
-    position: absolute;
-    left: 27px;
-    top: 32px;
-    overflow: visible;
-    width: 450px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_Class {
-    position: absolute;
-    width: 964px;
-    height: 88px;
-    left: 101px;
-    top: 72px;
-    overflow: hidden;
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_0_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 0px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_21 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID1_A3_Text_30_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_1_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 230px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_22 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID2_A3_Text_31_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_2_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 460px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_23 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID3_A3_Text_32_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_3_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 690px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_24 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID4_A3_Text_33_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    color: rgba(112,112,112,1);
-}
-.Repeat_Grid_8_A3_RepeatGrid_6_4_Class {
-    position: absolute;
-    width: 35px;
-    height: 72px;
-    left: 920px;
-    top: 16px;
-    overflow: visible;
-}
-.Ellipse_1_A3_Ellipse_25 {
-    position: absolute;
-    overflow: visible;
-    width: 35px;
-    height: 35px;
-    left: 0px;
-    top: 37px;
-}
-.ID5_A3_Text_34_Class {
-    position: absolute;
-    left: 8px;
-    top: 0px;
-    overflow: visible;
-    width: 18px;
-    white-space: nowrap;
-    text-align: left;
-    font-family: Segoe-UI;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
+    font-weight: bold;
+    font-size: 48px;
     color: rgba(112,112,112,1);
 }
