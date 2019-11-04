@@ -1,20 +1,72 @@
 var express = require('express');
 var router = express.Router();
-const connection = require('../model/database.js')
-const multipart = require('connect-multiparty');
-const multipartMiddleware = multipart({ uploadDir: './uploads'});
-const bodyParser = require('body-parser');
-const xlsx = require('node-xlsx')
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({
-    extended: true
-}));
+const connection = require('../model/database.js');
+const multer = require('multer');
+var uploadService = multer({ storage: multer.memoryStorage() });
+const xlsx = require('node-xlsx');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+// TODO: Asynchronously return response
+router.post('/api/upload', uploadService.single('uploadedFile'), function(req, res) {
+	var fileBuffer = req.file.buffer
+	var obj = xlsx.parse(fileBuffer)
+	// Get column indices
+	var classNbrColumn
+	var instructorEmailColumn
+	var instructorNameColumn
+    var studentIdColumn
+    var studentEmailColumn
+    var topRow = obj[0].data[0]
+    for(var i in topRow) {
+    	switch(topRow[i]) {
+    		case 'Class Nbr':
+    			classNbrColumn = i
+    			break
+    		case 'Instructor Email':
+    			instructorEmailColumn = i
+				break
+			case 'Instructor':
+				instructorNameColumn = i
+				break
+    		case 'Student ID':
+    			studentIdColumn = i
+    			break
+    		case 'Student Email':
+    			studentEmailColumn = i
+    			break
+    		default:
+    			continue
+    	}
+	}
+    // Fill arrays with data from document
+    var classNbrs = []
+	var instructorEmails = []
+	var instructorNames = []
+    var studentIds = []
+	var studentEmails = []
+    var data = obj[0].data
+    for(var i = 1; i < data.length; i++) {
+		if (!data[i][classNbrColumn]) break
+    	classNbrs.push(data[i][classNbrColumn]);
+		instructorEmails.push(data[i][instructorEmailColumn])
+		instructorNames.push(data[i][instructorNameColumn])
+    	studentIds.push(data[i][studentIdColumn])
+    	studentEmails.push(data[i][studentEmailColumn])
+    }
+    var excelData = {
+    	'classNbrs': classNbrs,
+		'instructorEmails': instructorEmails,
+		'instructorNames': instructorNames,
+    	'studentIds': studentIds,
+    	'studentEmails': studentEmails
+	}
+	insertExcelDataIntoDB(excelData)
+	res.sendStatus(200)
+}) 
 
 router.post('/submit', function(req, res) {
   const body = req.body;
@@ -26,67 +78,10 @@ router.post('/submit', function(req, res) {
       body.q_4a, body.q_4b,	body.q_4c, 
       body.q_5a],
       (err,result) => {
-    if(err) res.send(err);
-    else res.send(result);
-  });
+        if(err) res.send(err);
+        else res.sendStatus(200);
+      });
 });
-
-//upload api
-router.get('/api/upload', multipartMiddleware, (req, res) => {
-    var obj = xlsx.parse('./uploads/Engineering Lab Evaluation Registration Data.xlsx')
-    // Find the columns of the data needed
-    var classNbrColumn
-    var instructorEmailColumn
-    var studentIdColumn
-    var studentEmailColumn
-    var topRow = obj[0].data[0]
-    for(var i in topRow) {
-    	switch(topRow[i]) {
-    		case 'Class Nbr':
-    			classNbrColumn = i
-    			break
-    		case 'Instructor Email':
-    			instructorEmailColumn = i
-    			break
-    		case 'Student ID':
-    			studentIdColumn = i
-    			break
-    		case 'Student Email':
-    			studentEmailColumn = i
-    			break
-    		default:
-    			continue
-    	}
-    }
-    // Fill arrays with data from document
-    var classNbrs = []
-    var instructorEmails = []
-    var studentIds = []
-    var studentEmails = []
-    var data = obj[0].data
-    //find data length
-    var dataLength = 0
-    while(data[dataLength] != 0) {
-    	dataLength++
-    }
-    for(var i = 1; i < dataLength; i++) {
-    	classNbrs.push(data[i][classNbrColumn]);
-    	instructorEmails.push(data[i][instructorEmailColumn])
-    	studentIds.push(data[i][studentIdColumn])
-    	studentEmails.push(data[i][studentEmailColumn])
-    }
-    var excelData = {
-    	'classNbrs': classNbrs,
-    	'instructorEmails': instructorEmails,
-    	'studentIds': studentIds,
-    	'studentEmails': studentEmails
-    }
-    console.log(excelData)
-
-	res.json({
-        'message': 'File uploaded successfully'
-    });
-})
 
 /* test json for /submit
 {
@@ -114,5 +109,61 @@ router.get('/api/upload', multipartMiddleware, (req, res) => {
 	"q_5a": "Superb"
 }
 */
+
+router.get('/results', function(req, res, next) {
+  const section_id = '83624';
+  connection.query(
+    'SELECT * FROM Survey WHERE section_id = ?',
+    [section_id],
+    (err, result) => {
+      if(err) res.send(err);
+      else res.send(result);
+    }
+  )
+});
+
+function insertExcelDataIntoDB(excelData) {
+	numRows = excelData.classNbrs.length
+	var i
+	for (i = 0; i < numRows; i++) {
+		instructorEmail = excelData.instructorEmails[i]
+		instructorName = excelData.instructorNames[i]
+		sectionId = excelData.classNbrs[i]
+		studentEmail = excelData.studentEmails[i]
+		studentId = excelData.studentIds[i]
+		connection.query(
+			'INSERT INTO Professor VALUES (?, ?)',
+			[instructorName, instructorEmail],
+			(err, res) => {
+				if(err) console.log(err.sqlMessage)
+				else console.log("Successfully inserted into Professor")
+			}
+		)
+		connection.query(
+			'INSERT INTO Student VALUES (?, ?)',
+			[studentId, studentEmail],
+			(err, res) => {
+				if(err) console.log(err.sqlMessage)
+				else console.log("Successfully inserted into Student")
+			}
+		)
+		connection.query(
+			'INSERT INTO Section VALUES (?, ?)',
+			[sectionId, instructorEmail],
+			(err, res) => {
+				if(err) console.log(err.sqlMessage)
+				else console.log("Successfully inserted into Section")
+			}
+		)
+		connection.query(
+			'INSERT INTO Attends VALUES (?, ?)',
+			[sectionId, studentId],
+			(err, res) => {
+				if(err) console.log(err.sqlMessage)
+				else console.log("Successfully inserted into Attends")
+			}
+		)
+	}	
+}
 
 module.exports = router;
