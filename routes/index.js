@@ -32,13 +32,56 @@ router.post('/submit', function(req, res) {
 });
 
 //upload api
-router.post('/api/upload', multipartMiddleware, (req, res) => {
-   console.log(req);
-	// var file = req.files.file
-	// console.log(file)
-	// console.log('uploaded file with name ' + file.name)
-    // console.log(file.type)
-    //var workbook = xlsx.readFile('./uploads/')
+router.get('/api/upload', multipartMiddleware, (req, res) => {
+    var obj = xlsx.parse('./uploads/Engineering Lab Evaluation Registration Data.xlsx')
+    // Find the columns of the data needed
+    var classNbrColumn
+    var instructorEmailColumn
+    var studentIdColumn
+    var studentEmailColumn
+    var topRow = obj[0].data[0]
+    for(var i in topRow) {
+    	switch(topRow[i]) {
+    		case 'Class Nbr':
+    			classNbrColumn = i
+    			break
+    		case 'Instructor Email':
+    			instructorEmailColumn = i
+    			break
+    		case 'Student ID':
+    			studentIdColumn = i
+    			break
+    		case 'Student Email':
+    			studentEmailColumn = i
+    			break
+    		default:
+    			continue
+    	}
+    }
+    // Fill arrays with data from document
+    var classNbrs = []
+    var instructorEmails = []
+    var studentIds = []
+    var studentEmails = []
+    var data = obj[0].data
+    //find data length
+    var dataLength = 0
+    while(data[dataLength] != 0) {
+    	dataLength++
+    }
+    for(var i = 1; i < dataLength; i++) {
+    	classNbrs.push(data[i][classNbrColumn]);
+    	instructorEmails.push(data[i][instructorEmailColumn])
+    	studentIds.push(data[i][studentIdColumn])
+    	studentEmails.push(data[i][studentEmailColumn])
+    }
+    var excelData = {
+    	'classNbrs': classNbrs,
+    	'instructorEmails': instructorEmails,
+    	'studentIds': studentIds,
+    	'studentEmails': studentEmails
+    }
+    console.log(excelData)
 
 	res.json({
         'message': 'File uploaded successfully'
