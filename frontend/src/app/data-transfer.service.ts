@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ReplaceSource } from 'webpack-sources';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,12 @@ export class DataTransferService {
   }
 
   submitSurvey(submission){
-    this.http.post('/api/submit',submission).subscribe((response) => {
-      console.log('response received is ', response);
+    this.http.post('/api/submit',submission, { responseType: 'text' }).subscribe((response) => {
+      // console.log('response received is ', response);
     })
+  }
+
+  getResults(){
+    return this.http.get('/api/results');
   }
 }

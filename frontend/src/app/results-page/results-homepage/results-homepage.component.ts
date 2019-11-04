@@ -160,10 +160,16 @@ export class ResultsHomepageComponent implements OnInit {
     }
   ]
 
+  surveyData = null;
 
-  constructor() { }
+
+  constructor(private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
+    this.dataTransferService.getResults().subscribe((response)=>{
+      this.surveyData = response;
+      console.log(this.surveyData)
+    });
   }
 
   changePage(increment: number){
@@ -172,6 +178,14 @@ export class ResultsHomepageComponent implements OnInit {
     ){
       this.currentPageIndex += increment;
     }
+  }
+
+  getAverage(question){
+    let questionSum = 0; 
+    this.surveyData.forEach(surveyResponse => {
+      questionSum += surveyResponse[question.label];
+    });
+    return questionSum/this.surveyData.length;
   }
 
 }

@@ -184,7 +184,7 @@ export class SurveyHomepageComponent implements OnInit {
 
   clickSubmit(){
     let submission = {
-      section_id: "123456"
+      section_id: "83550"
     }
     this.questionPages.forEach(questionPage =>{
       questionPage.questions.forEach(question =>{

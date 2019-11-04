@@ -83,7 +83,7 @@ router.post('/api/submit', function(req, res) {
       });
 });
 
-router.get('/results', function(req, res, next) {
+router.get('/api/results', function(req, res, next) {
   const section_id = '83624';
   connection.query(
     'SELECT * FROM Survey WHERE section_id = ?',

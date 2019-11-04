@@ -29,7 +29,7 @@
 			</svg>
 		</div>
 	</div>
-	<ng-container>
+	<ng-container *ngIf="surveyData">
 			<div class="Page-Title">
 				<span>{{currentPageIndex+1}}. {{questionPages[currentPageIndex].title}}</span>
 			</div>
@@ -37,13 +37,13 @@
 				<div class="Survey_Question" *ngFor="let question of questionPages[currentPageIndex].questions;">
 					<label class="Question-Title">{{question.text}}</label>
 					<div class = "Scale-Question" *ngIf="question.type == qstTypeScale">
-						scale
+						Average: {{getAverage(question)}}
 					</div>
 					<div class = "Response_Question" *ngIf="question.type == qstTypeResponse">
-						free response
+						<p *ngFor="let survey of surveyData; let i = index;"> Response {{i+1}}: {{survey[question.label]}} </p>
 					</div>
 					<div class = "Hours_Question" *ngIf="question.type == qstTypeHours">
-						hours
+						Average: {{getAverage(question)}}
 					</div>
 				</div>
 			</div>
