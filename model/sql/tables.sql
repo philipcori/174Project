@@ -55,9 +55,9 @@ CREATE TABLE Survey
 	q_3b integer,
 	q_3c integer,
 	q_3d varchar(4000),
-	q_4a integer,
-	q_4b integer,
-	q_4c integer,
+	q_4a varchar(3),
+	q_4b varchar(3),
+	q_4c varchar(3),
 	q_5a varchar(4000),
 	CONSTRAINT FK_Survey_Section FOREIGN KEY (section_id) REFERENCES Section(section_id)
 );
