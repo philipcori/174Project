@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="22584765964-rs9l9tl8f8u1e6h0tcfh4qjsen71rlar.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
   <meta charset="utf-8">
   <title>Frontend</title>
   <base href="/">
@@ -11,5 +14,9 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+    var calculatedFontSize = (window.innerWidth * (16 / 1920));
+    document.querySelector("html").style.fontSize = (calculatedFontSize < 8 ? 8 : calculatedFontSize) + "px";
+  </script>
 </body>
 </html>

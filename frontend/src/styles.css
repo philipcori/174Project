@@ -3,8 +3,21 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.left-column{
+    position: fixed;
+    width: 35rem;
+}
+
+.right-column{
+    position: relative;
+    left: 45rem;
+    top: 2rem;
+    width: 65rem;
+    overflow: scroll;
+}
+
 .Repeat_Grid_9_Class {
-    position: absolute;
+    position: relative;
     width: 1166px;
     height: 852px;
     left: 689px;

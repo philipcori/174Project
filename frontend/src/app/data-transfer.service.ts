@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ReplaceSource } from 'webpack-sources';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +27,9 @@ export class DataTransferService {
   }
 
   getResults(){
-    return this.http.get('/api/results');
+    let submission = {
+      section_id: "83550"
+    }
+    return this.http.post('/api/results', submission);
   }
 }
