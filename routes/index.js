@@ -4,6 +4,7 @@ const connection = require('../model/database.js');
 const multer = require('multer');
 var uploadService = multer({ storage: multer.memoryStorage() });
 const xlsx = require('node-xlsx');
+const nodemailer = require('nodemailer')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -93,6 +94,29 @@ router.post('/api/results', function(req, res, next) {
       else res.send(result);
     }
   )
+});
+
+router.post('/api/schedule', function(req, res) {
+	var transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+		  user: 'engineeringlabsurvey',
+		  pass: '174Project'
+		}
+	});
+	var mailOptions = {
+		from: 'engineeringlabsurvey@gmail.com',
+		to: 'pcori@scu.edu',
+		subject: 'Sending Email using Node.js',
+		text: 'Please follow the link to fill out your engineering lab evaluation surveys: http://localhost:4200/login'
+	};
+	transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+			  res.send(error)
+		} else {
+			  res.send('Email sent: ' + info.response)
+		}
+	});
 });
 
 function insertExcelDataIntoDB(excelData) {
