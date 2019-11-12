@@ -1,54 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 
-
-declare const gapi: any;
+// Google's login API namespace
+declare var gapi:any;
 
 @Component({
   selector: 'app-login-homepage',
   templateUrl: './login-homepage.component.html',
   styleUrls: ['./login-homepage.component.css']
 })
-export class LoginHomepageComponent implements OnInit {
+export class LoginHomepageComponent {
+  googleLoginButtonId = "google-login-button";
+  userAuthToken = null;
+  userDisplayName = "empty";
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private _zone: NgZone) {
+    console.log(this);
   }
 
-  public auth2: any;
-
-  public googleInit() {
-    gapi.load('auth2', () => {
-      this.auth2 = gapi.auth2.init({
-        client_id: 'http://22584765964-rs9l9tl8f8u1e6h0tcfh4qjsen71rlar.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        scope: 'profile email'
+  // Angular hook that allows for interaction with elements inserted by the
+  // rendering of a view.
+  ngAfterViewInit() {
+    // Converts the Google login button stub to an actual button.
+    gapi.signin2.render(
+      this.googleLoginButtonId,
+      {
+        "onSuccess": this.onGoogleLoginSuccess,
+        "scope": "profile",
+        "theme": "dark"
       });
-      this.attachSignin(document.getElementById('googleBtn'));
+  }
+
+  // Triggered after a user successfully logs in using the Google external
+  // login provider.
+  onGoogleLoginSuccess = (loggedInUser) => {
+    this._zone.run(() => {
+        this.userAuthToken = loggedInUser.getAuthResponse().id_token;
+        this.userDisplayName = loggedInUser.getBasicProfile().getName();
     });
   }
-
-  public attachSignin(element) {
-    this.auth2.attachClickHandler(element, {},
-      (googleUser) => {
-
-        let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
-
-
-      }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
-      });
-  }
-
-ngAfterViewInit(){
-      this.googleInit();
-}
-  
-
 }

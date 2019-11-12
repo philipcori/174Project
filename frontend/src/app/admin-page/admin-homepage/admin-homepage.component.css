@@ -77,15 +77,22 @@
 }
 .admin-icon {
     overflow: visible;
-    width: 10rem;
-    left: 26.5rem; /*32.5 - half width of icon*/
+    width: 15%;
+    left: 42.5%; /*32.5 - half width of icon*/
+    transform: matrix(1,0,0,1,0,0);
+    margin: auto;
+}
+.cal-icon {
+    overflow: visible;
+    width: 20%;
+    left: 40%; /*50% - half width of icon*/
     transform: matrix(1,0,0,1,0,0);
     margin: auto;
 }
 
 .admin-box-text {
     position: relative;
-    width: 50rem;
+    width: 90%;
     text-align: center;
     font-family: Segoe-UI;
     font-style: normal;
@@ -95,9 +102,19 @@
     padding-top:1rem;
     color: rgba(112,112,112,1);
 }
-.Icon_ionic_md_calendar {
+.half-box{
+    width:50%;
+    display: inline-block;
+}
+.half-box-text{
+    font-size: 1.5rem;
     position: relative;
-    width: 142.664px;
-    height: 142.66px;
-    transform: matrix(1,0,0,1,0,0);
+    width: 90%;
+    text-align: center;
+    font-family: Segoe-UI;
+    font-style: normal;
+    font-weight: normal;
+    margin: auto;
+    padding-top:1rem;
+    color: rgba(112,112,112,1);
 }
