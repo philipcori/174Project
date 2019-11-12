@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'survey-page', loadChildren: () => import(`./survey-page/survey-page.module`).then(m => m.SurveyPageModule)},
   { path: 'results-page', loadChildren: () => import(`./results-page/results-page.module`).then(m => m.ResultsPageModule)},
   { path: 'login', loadChildren: () => import(`./login-page/login-page.module`).then(m => m.LoginPageModule)},
-  { path: 'redirect', loadChildren: () => import(`./login-page/login-page.module`).then(m => m.LoginPageModule)}
+  { path: '', redirectTo: "/login", pathMatch: "full"},
+  { path: '**', redirectTo: "/login"},
 ];
 
 @NgModule({

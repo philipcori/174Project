@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataTransferService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private stateService: StateService
+  ) { }
 
   uploadFile(file:File){
     console.log(file);
@@ -31,5 +36,14 @@ export class DataTransferService {
       section_id: "83550"
     }
     return this.http.post('/api/results', submission);
+  }
+
+  redirect(): Observable<any>{
+    let request = {
+      email: this.stateService.userEmail,
+      access_token: this.stateService.userAuthToken
+    }
+
+    return this.http.post('/api/redirect', request, { responseType: 'json' });
   }
 }

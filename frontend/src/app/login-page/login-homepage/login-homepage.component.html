@@ -1,9 +1,18 @@
-<p>login-homepage works!</p>
 <div class="login-wrapper">
-    <p>You need to log in.</p>
-    <div id="{{googleLoginButtonId}}"></div>
+    <div class="login">
+        <div class="centered login-text" *ngIf="!stateService.loggedInUser">
+            <p>Please log in to you SCU email below</p>
+        </div>
+        <div class="g-signin2" id="{{googleLoginButtonId}}"></div>
+        <div class="centered login-text" *ngIf="stateService.loggedInUser">
+            <ng-container *ngIf="validLogin; else elseBlock">
+                <p>Logged in with {{stateService.userEmail}}!</p>
+                <p>Redirecting shortly...</p>
+            </ng-container>
+            <ng-container #elseblock>
+                <p>Invalid login, try logging out and making sure you are logged in with your SCU account.</p>
+            </ng-container>
+            <button (click)="signOut()">Sign out</button>
+        </div>
+    </div>
 </div>
-<div class="main-application">
-    <p>Hello, {{userDisplayName}}!</p>
-</div>
-      

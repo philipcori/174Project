@@ -1,7 +1,23 @@
-import { Component, NgZone} from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { DataTransferService } from 'src/app/data-transfer.service';
+import { Observable } from 'rxjs';
+import { Router } from "@angular/router";
+import { StateService } from 'src/app/state.service';
 
 // Google's login API namespace
 declare var gapi:any;
+
+// Constants for routing
+const userStudent: string = "student";
+const userProfessor:  string = "professor";
+const userAdmin: string = "admin";
+const userInvalid: string = "invalid";
+
+const studentURL: string = "survey-page";
+const adminURL: string = "admin-page";
+const professorURL: string = "professor-page";
+const invalidURL: string = "survey-page";
+
 
 @Component({
   selector: 'app-login-homepage',
@@ -10,17 +26,22 @@ declare var gapi:any;
 })
 export class LoginHomepageComponent {
   googleLoginButtonId = "google-login-button";
-  userAuthToken = null;
-  userDisplayName = "empty";
+  validLogin = true;
 
-  constructor(private _zone: NgZone) {
-    console.log(this);
+  constructor(
+      private _zone: NgZone,
+      private dataTransferService: DataTransferService,
+      public stateService: StateService,
+      private router: Router
+    ){
   }
 
   // Angular hook that allows for interaction with elements inserted by the
   // rendering of a view.
   ngAfterViewInit() {
     // Converts the Google login button stub to an actual button.
+    this.stateService.gapi = gapi;
+
     gapi.signin2.render(
       this.googleLoginButtonId,
       {
@@ -34,8 +55,45 @@ export class LoginHomepageComponent {
   // login provider.
   onGoogleLoginSuccess = (loggedInUser) => {
     this._zone.run(() => {
-        this.userAuthToken = loggedInUser.getAuthResponse().id_token;
-        this.userDisplayName = loggedInUser.getBasicProfile().getName();
+        this.stateService.login(loggedInUser);
+        let httpObservable:Observable<any> = this.dataTransferService.redirect();
+        
+        httpObservable.subscribe((response) => {
+          this.validLogin = true;
+          console.log(response);
+          this.router.navigate([this.redirectURLMap(response["type"])]);
+        }, error => {
+          console.log("error")
+          
+          // FOR TESTING
+          // this.router.navigate([this.redirectURLMap("student")]);
+          
+          // Display error on login page
+          this.validLogin = false;
+        });
     });
+  }
+
+  private redirectURLMap(userType: any){
+    if(userType == userStudent){
+      return studentURL;
+    }
+    if(userType == userAdmin){
+      return studentURL;
+    }
+    if(userType == userProfessor){
+      return studentURL;
+    }
+    if(userType == userInvalid){
+      return studentURL;
+    }
+  }
+  
+  signOut(){
+    // var auth2 = gapi.auth2.getAuthInstance();
+    // gapi.auth2.getAuthInstance().disconnect();
+
+    this.stateService.logout();
+    this.validLogin = false;
   }
 }
