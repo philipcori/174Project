@@ -28,10 +28,18 @@ CREATE TABLE TA
 	ta_id integer PRIMARY KEY
 );
 
+CREATE TABLE Admin
+(
+	admin_email varchar(50) PRIMARY KEY
+);
+
 CREATE TABLE Section
 (
 	section_id integer PRIMARY KEY,
 	professor_email varchar(50),
+	course_subject varchar(10),
+	catalog_num varchar(10),
+	course_title varchar(100),
 	CONSTRAINT FK_Section_Professor FOREIGN KEY (professor_email) REFERENCES Professor(professor_email)
 );
 
@@ -74,6 +82,7 @@ CREATE TABLE Attends
 (
 	section_id integer,
 	student_id integer,
+	filled_out BOOLEAN,
 	CONSTRAINT FK_Attends_Section FOREIGN KEY (section_id) REFERENCES Section(section_id),
 	CONSTRAINT FK_Attends_Student FOREIGN KEY (student_id) REFERENCES Student(student_id)
 );
