@@ -13,9 +13,9 @@ const userProfessor:  string = "professor";
 const userAdmin: string = "admin";
 const userInvalid: string = "invalid";
 
-const studentURL: string = "survey-page";
+const studentURL: string = "sections-page";
 const adminURL: string = "admin-page";
-const professorURL: string = "professor-page";
+const professorURL: string = "sections-page";
 const invalidURL: string = "survey-page";
 
 
@@ -61,15 +61,22 @@ export class LoginHomepageComponent {
         httpObservable.subscribe((response) => {
           this.validLogin = true;
           console.log(response);
-          this.router.navigate([this.redirectURLMap(response["type"])]);
+          let URL = this.redirectURLMap(response["type"]);
+          
+          if(URL == invalidURL){
+            // Error for invalid user
+          }
+          else{
+            this.router.navigate([URL]);
+          }
         }, error => {
           console.log("error")
           
           // FOR TESTING
-          // this.router.navigate([this.redirectURLMap("student")]);
+          this.router.navigate([this.redirectURLMap("student")]);
           
           // Display error on login page
-          this.validLogin = false;
+          // this.validLogin = false;
         });
     });
   }
@@ -79,13 +86,13 @@ export class LoginHomepageComponent {
       return studentURL;
     }
     if(userType == userAdmin){
-      return studentURL;
+      return adminURL;
     }
     if(userType == userProfessor){
-      return studentURL;
+      return professorURL;
     }
     if(userType == userInvalid){
-      return studentURL;
+      return invalidURL;
     }
   }
   

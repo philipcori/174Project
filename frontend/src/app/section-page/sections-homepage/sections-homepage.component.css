@@ -17,19 +17,15 @@
     top: 0px;
     transform: matrix(1,0,0,1,0,0);
 }
-.admin-icon {
-    overflow: visible;
-    width: 15%;
-    left: 42.5%; /*32.5 - half width of icon*/
-    transform: matrix(1,0,0,1,0,0);
-    margin: auto;
-}
-.cal-icon {
-    overflow: visible;
-    width: 20%;
-    left: 40%; /*50% - half width of icon*/
-    transform: matrix(1,0,0,1,0,0);
-    margin: auto;
+
+.section-box-border{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top:2rem;
+    padding-bottom:2rem;
+    width:100%;
+    border: .2rem solid rgba(112,112,112,1);
+    display: block;
 }
 
 .admin-box-text {

@@ -11,8 +11,10 @@ export class StateService {
   public gapi = null;
   public loggedInUser = null;
   public userAuthToken = null;
-  public userDisplayName = "empty";
+  public userDisplayName = "";
   public userEmail = null;
+  public userType = null;
+  public selectedSectionID = null;
 
   constructor(
     private router: Router
@@ -29,9 +31,10 @@ export class StateService {
     gapi.auth2.getAuthInstance().disconnect();
     this.loggedInUser = null;
     this.userAuthToken = null;
-    this.userDisplayName = "empty";
+    this.userDisplayName = "";
     this.userEmail = null;
-  
+    this.userType = null;
+    this.selectedSectionID = null;  
   }
 
 

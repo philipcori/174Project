@@ -5,7 +5,7 @@
         </div>
         <div class="g-signin2" id="{{googleLoginButtonId}}"></div>
         <div class="centered login-text" *ngIf="stateService.loggedInUser">
-            <ng-container *ngIf="validLogin; else elseBlock">
+            <ng-container *ngIf="validLogin; else elseblock">
                 <p>Logged in with {{stateService.userEmail}}!</p>
                 <p>Redirecting shortly...</p>
             </ng-container>
