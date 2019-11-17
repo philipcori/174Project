@@ -41,13 +41,13 @@ export class SectionsHomepageComponent implements OnInit {
         this.sectionsArray = response;
       });
     }
-    // TODO - Testing
-    else{
-      this.dataTransferService.getProfessorSections().subscribe((response)=>{
-        this.sectionsArray = response;
-        console.log(this.sectionsArray)
-      });
-    }
+    // // TODO - Testing
+    // else{
+    //   this.dataTransferService.getProfessorSections().subscribe((response)=>{
+    //     this.sectionsArray = response;
+    //     console.log(this.sectionsArray)
+    //   });
+    // }
   }
   
   clickSection(sectionID){

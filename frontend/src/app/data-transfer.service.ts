@@ -66,7 +66,7 @@ export class DataTransferService {
 
   getProfessorSections(){
     let request = {
-      prof_email: "Kukzenski@gmail.com",//this.stateService.userEmail,
+      prof_email: this.stateService.userEmail,
       access_token: this.stateService.userAuthToken
     }
 
