@@ -1,5 +1,5 @@
 -- drop tables
-/*
+
 DROP TABLE Attends;
 DROP TABLE Assists;
 DROP TABLE Survey;
@@ -8,7 +8,7 @@ DROP TABLE Professor;
 DROP TABLE TA;
 DROP TABLE Student;
 
-*/
+
 -- create tables for entities
 CREATE TABLE Professor
 (
@@ -32,6 +32,9 @@ CREATE TABLE Admin
 (
 	admin_email varchar(50) PRIMARY KEY
 );
+-- INSERT INTO `Student` VALUES('pcori@scu.edu');
+INSERT INTO `Admin` VALUES('aanderhub@scu.edu');
+-- INSERT INTO `Professor` VALUES('dkertson@scu.edu');
 
 CREATE TABLE Section
 (

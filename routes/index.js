@@ -106,8 +106,9 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
 		}
 	);
 	connection.query(
-		'UPDATE Attends SET filled_out = TRUE WHERE section_id = ? AND student_id = ?',
-		[body.section_id, body.student_id],
+		'UPDATE Attends SET filled_out = TRUE WHERE section_id = ? AND student_id = \
+(SELECT student_id FROM Student WHERE student_email = ?)',
+		[body.section_id, body.student_email],
 		(err, result) => {
 			if(err) res.send(err)
 			else res.sendStatus(200)
@@ -138,7 +139,7 @@ router.post('/api/schedule', function(req, res) {
 	var mailOptions = {
 		from: 'engineeringlabsurvey@gmail.com',
 		to: 'pcori@scu.edu',
-		subject: 'Sending Email using Node.js',
+		subject: 'Engineering Lab Evaluations',
 		text: 'Please follow the link to fill out your engineering lab evaluation surveys: http://localhost:4200/login'
 	};
 	transporter.sendMail(mailOptions, function(error, info){
@@ -221,7 +222,7 @@ router.post('/api/redirect', (req, res) => {
 });
 
 function insertExcelDataIntoDB(excelData) {
-	numRows = excelData.classNbrs.length
+	let numRows = excelData.classNbrs.length
 	var i
 	for (i = 0; i < numRows; i++) {
 		instructorEmail = excelData.instructorEmails[i]
