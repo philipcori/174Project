@@ -65,19 +65,15 @@ export class LoginHomepageComponent {
           let URL = this.redirectURLMap(response["type"]);
           if(URL == invalidURL){
             // Error for invalid user
-            console.log("Error")
+            console.log("User not on list of approved users");
+            this.validLogin = false;
           }
           else{
             this.router.navigate([URL]);
           }
         }, error => {
-          console.log("error")
-          
-          // FOR TESTING
-          this.router.navigate([this.redirectURLMap("student")]);
-          
-          // Display error on login page
-          // this.validLogin = false;
+          console.log("Invalid login error")          
+          this.validLogin = false;
         });
     });
   }
