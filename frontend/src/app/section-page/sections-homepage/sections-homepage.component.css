@@ -18,25 +18,13 @@
     transform: matrix(1,0,0,1,0,0);
 }
 
-.section-box-border{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top:2rem;
-    padding-bottom:2rem;
-    width:100%;
-    border: .2rem solid rgba(112,112,112,1);
-    display: block;
-}
-
-.admin-box-text {
+.section-box-text {
     position: relative;
     width: 90%;
-    text-align: center;
     font-family: Segoe-UI;
     font-style: normal;
     font-weight: normal;
     font-size: 2rem;
-    margin: auto;
-    padding-top:1rem;
+    margin-left: 2rem;
     color: rgba(112,112,112,1);
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from "src/app/data-transfer.service"
+import { Router } from '@angular/router';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-results-homepage',
@@ -163,7 +165,11 @@ export class ResultsHomepageComponent implements OnInit {
   surveyData = null;
 
 
-  constructor(private dataTransferService: DataTransferService) { }
+  constructor(
+    private stateService: StateService,
+    private dataTransferService: DataTransferService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.dataTransferService.getResults().subscribe((response)=>{
@@ -188,4 +194,8 @@ export class ResultsHomepageComponent implements OnInit {
     return questionSum/this.surveyData.length;
   }
 
+  clickBack(){
+    this.stateService.selectedSectionID;
+    this.router.navigate(["/sections-page"]);
+  }
 }

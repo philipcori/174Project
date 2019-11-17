@@ -25,15 +25,24 @@ export class DataTransferService {
     })
   }
 
-  submitSurvey(submission){
-    this.http.post('/api/submit',submission, { responseType: 'text' }).subscribe((response) => {
-      // console.log('response received is ', response);
+  sendSurvey(){
+    let request:any = null;
+    this.http.post('/api/schedule', request).subscribe((response) => {
+      console.log('response received is ', response);
     })
+  }
+
+  submitSurvey(submission){
+    submission["student_email"] = this.stateService.userEmail;
+    submission["section_id"] = this.stateService.selectedSectionID;
+    submission["auth_token"] = this.stateService.userAuthToken;
+
+    return this.http.post('/api/submit', submission, { responseType: 'text' });
   }
 
   getResults(){
     let submission = {
-      section_id: "83550"
+      section_id: this.stateService.selectedSectionID
     }
     return this.http.post('/api/results', submission);
   }
@@ -45,5 +54,22 @@ export class DataTransferService {
     }
 
     return this.http.post('/api/redirect', request, { responseType: 'json' });
+  }
+
+  getStudentSections(){
+    let request = {
+      student_email: this.stateService.userEmail,
+      access_token: this.stateService.userAuthToken
+    }
+    return this.http.post('/api/get_student_sections', request, { responseType: 'json' });
+  }
+
+  getProfessorSections(){
+    let request = {
+      prof_email: "Kukzenski@gmail.com",//this.stateService.userEmail,
+      access_token: this.stateService.userAuthToken
+    }
+
+    return this.http.post('/api/get_professor_sections', request, { responseType: 'json' });
   }
 }

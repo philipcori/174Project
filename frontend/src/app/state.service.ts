@@ -37,5 +37,8 @@ export class StateService {
     this.selectedSectionID = null;  
   }
 
+  removeSectionSelection(){
+    this.selectedSectionID = null;
+  }
 
 }

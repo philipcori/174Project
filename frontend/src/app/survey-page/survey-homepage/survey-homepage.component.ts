@@ -184,7 +184,9 @@ export class SurveyHomepageComponent implements OnInit {
 
   clickSubmit(){
     let submission = {
-      section_id: "83550"
+      student_email: null,
+      section_id: null,
+      auth_token: null
     }
     this.questionPages.forEach(questionPage =>{
       questionPage.questions.forEach(question =>{
@@ -195,7 +197,9 @@ export class SurveyHomepageComponent implements OnInit {
     // TODO - validate
 
     console.log(submission);
-    this.dataTransferService.submitSurvey(submission);    
+    this.dataTransferService.submitSurvey(submission).subscribe((response) => {
+        console.log('response received is ', response);
+    });    
   }
 
 }

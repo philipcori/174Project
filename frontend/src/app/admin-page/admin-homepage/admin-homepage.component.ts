@@ -16,4 +16,8 @@ export class AdminHomepageComponent implements OnInit {
   uploadFile(file:File){
     this.dataTransferService.uploadFile(file);
   }
+
+  clickSend(){
+    this.dataTransferService.sendSurvey();
+  }
 }

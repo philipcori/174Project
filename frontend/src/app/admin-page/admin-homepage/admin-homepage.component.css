@@ -44,3 +44,7 @@
     padding-top:1rem;
     color: rgba(112,112,112,1);
 }
+
+.right-align {
+    float: right;
+}

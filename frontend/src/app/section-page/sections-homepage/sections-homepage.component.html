@@ -16,12 +16,12 @@
             <path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width=".5rem" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" d="M 0 0 L 4000 0">
             </path>
         </svg>
-        <div>
-            <div class="section-box-border">
-                <div class="admin-box-text">
-                    <span>Click to Upload .xlsx File</span>
+        <ng-container *ngIf="sectionsArray">
+            <div class="admin-box-border" *ngFor="let section of sectionsArray" (click)="clickSection(section.section_id)">
+                <div class="section-box-text">
+                    <span>{{section.section_id}}: {{section.course_subject}} {{section.catalog_num}} - {{section.course_title}}</span>
                 </div> 
             </div>
-        </div>
+        </ng-container>
     </div>
 </div>

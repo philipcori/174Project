@@ -111,6 +111,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width:100%;
     border: .2rem solid rgba(112,112,112,1);
     display: block;
+    cursor: pointer;
 }
 
 .Welcome_Admin__Class {
