@@ -5,11 +5,11 @@
         </div>
         <div class="g-signin2" id="{{googleLoginButtonId}}"></div>
         <div class="centered login-text" *ngIf="stateService.loggedInUser">
-            <ng-container *ngIf="validLogin; else elseblock">
+            <ng-container *ngIf="validLogin">
                 <p>Logged in with {{stateService.userEmail}}!</p>
                 <p>Redirecting shortly...</p>
             </ng-container>
-            <ng-container #elseblock>
+            <ng-container *ngIf="!validLogin">
                 <p>Invalid login, try logging out and making sure you are logged in with your SCU account.</p>
             </ng-container>
             <button (click)="signOut()">Sign out</button>

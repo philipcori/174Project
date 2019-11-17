@@ -61,10 +61,11 @@ export class LoginHomepageComponent {
         httpObservable.subscribe((response) => {
           this.validLogin = true;
           console.log(response);
+          this.stateService.userType = response["type"];
           let URL = this.redirectURLMap(response["type"]);
-          
           if(URL == invalidURL){
             // Error for invalid user
+            console.log("Error")
           }
           else{
             this.router.navigate([URL]);
