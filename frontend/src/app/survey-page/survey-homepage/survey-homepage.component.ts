@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from 'src/app/data-transfer.service';
 import { StateService } from 'src/app/state.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey-homepage',
@@ -167,7 +168,8 @@ export class SurveyHomepageComponent implements OnInit {
 
   constructor(
     private dataTransferService: DataTransferService,
-    public stateService: StateService
+    public stateService: StateService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -203,6 +205,8 @@ export class SurveyHomepageComponent implements OnInit {
     console.log(submission);
     this.dataTransferService.submitSurvey(submission).subscribe((response) => {
         console.log('response received is ', response);
+        this.router.navigate(["sections-page"]);
+
     });    
   }
 

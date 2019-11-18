@@ -58,7 +58,13 @@
                     Next
                     <i class="material-icons">keyboard_arrow_right</i>
                 </button>
-            </div>	
+            </div>
+            <div class = "bottom-button">
+                <button mat-flat-button *ngIf="currentPageIndex >= questionPages.length-1" (click)="clickSubmit()">
+                    Submit
+                    <i class="material-icons">done</i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
