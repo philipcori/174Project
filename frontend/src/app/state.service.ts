@@ -14,7 +14,10 @@ export class StateService {
   public userDisplayName = "";
   public userEmail = null;
   public userType = null;
+
   public selectedSectionID = null;
+  public selectedSectionSubject = null;
+  public selectedCatalogNum = null;
 
   constructor(
     private router: Router
@@ -34,11 +37,15 @@ export class StateService {
     this.userDisplayName = "";
     this.userEmail = null;
     this.userType = null;
-    this.selectedSectionID = null;  
+    this.selectedSectionID = null; 
+    this.selectedSectionSubject = null;
+    this.selectedCatalogNum = null; 
   }
 
   removeSectionSelection(){
     this.selectedSectionID = null;
+    this.selectedSectionSubject = null;
+    this.selectedCatalogNum = null;
   }
 
 }

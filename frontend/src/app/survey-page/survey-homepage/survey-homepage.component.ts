@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from 'src/app/data-transfer.service';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-survey-homepage',
@@ -164,7 +165,10 @@ export class SurveyHomepageComponent implements OnInit {
     }
   ]
 
-  constructor(private dataTransferService: DataTransferService) { }
+  constructor(
+    private dataTransferService: DataTransferService,
+    public stateService: StateService
+  ) { }
 
   ngOnInit() {
   }

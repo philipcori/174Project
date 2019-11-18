@@ -50,8 +50,10 @@ export class SectionsHomepageComponent implements OnInit {
     // }
   }
   
-  clickSection(sectionID){
-    this.stateService.selectedSectionID = sectionID;
+  clickSection(index: number){
+    this.stateService.selectedSectionID = this.sectionsArray[index].section_id;
+    this.stateService.selectedSectionSubject = this.sectionsArray[index].course_subject;
+    this.stateService.selectedCatalogNum = this.sectionsArray[index].catalog_num;  
     
     if(this.stateService.userType === userStudent){
       this.router.navigate(["survey-page"]);
@@ -59,9 +61,8 @@ export class SectionsHomepageComponent implements OnInit {
     else if(this.stateService.userType === userProfessor){
       this.router.navigate(["results-page"]);
     }
-    // FOR TESTING
     else{
-      this.router.navigate(["results-page"]);
+      console.error("This user should not be on this page")
     }
   }
 

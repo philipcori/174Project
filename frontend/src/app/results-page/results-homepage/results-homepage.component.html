@@ -1,65 +1,52 @@
-<div id="Results_Page" class="Results_Page_Class ">
-	<svg class="Line_1" viewBox="0 0 5 1080">
-		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="5px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_1_Class" d="M 0 0 L 0 1080">
-		</path>
-	</svg>
-	<div class="COEN_174__57975__Survey_Result_Class">
-		<span>COEN 174:<br/>57975<br/><br/>Survey Results</span>
-	</div>
-	<svg class="Line_2" viewBox="0 0 1165 3">
-		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_2_Class" d="M 0 0 L 1165 0">
-		</path>
-	</svg>
-	<svg class="Line_5" viewBox="0 0 1165 3">
-		<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="3px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_5_Class" d="M 0 0 L 1165 0">
-		</path>
-	</svg>
-	<div class="Group_17_Class">
-		<div class="Group_16_Class" (click)="clickBack()">
-			<svg class="Rectangle_5">
-				<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_5_Class" rx="0" ry="0" x="0" y="0" width="138" height="52">
-				</rect>
-			</svg>
-			<div class="Back_Class">
-				<span>Back</span>
-			</div>
-			<svg class="Icon_ionic_ios_arrow_back" viewBox="11.251 6.194 15.78 27.602">
-				<path fill="rgba(112,112,112,1)" class="Icon_ionic_ios_arrow_back_Class" d="M 16.00764274597168 19.99130249023438 L 26.45165824890137 9.555500984191895 C 27.22407531738281 8.783087730407715 27.22407531738281 7.534078121185303 26.45165824890137 6.769881725311279 C 25.67924690246582 5.997467994689941 24.43024063110352 6.005685806274414 23.6578254699707 6.769881725311279 L 11.82510566711426 18.59438323974609 C 11.07734298706055 19.3421459197998 11.06090927124023 20.5418529510498 11.76758480072021 21.31426620483398 L 23.64960861206055 33.22094345092773 C 24.03581428527832 33.60714721679688 24.5452823638916 33.796142578125 25.04652786254883 33.796142578125 C 25.54777145385742 33.796142578125 26.05723571777344 33.60714721679688 26.44344520568848 33.22094345092773 C 27.21586227416992 32.44852447509766 27.21586227416992 31.19952011108398 26.44344520568848 30.43532180786133 L 16.00764274597168 19.99130249023438 Z">
-				</path>
-			</svg>
+<div id="Upload_Page" class="Upload_Page_Class ">
+	<div class="left-column">
+		<svg class="Line_1">
+			<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="5px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_1_Class" d="M 0 0 L 0 4000">
+			</path>
+		</svg>
+		<div class="Welcome_Admin__Class">
+			<span>{{stateService.selectedSectionID}}: {{stateService.selectedSectionSubject}} {{stateService.selectedCatalogNum}} Survey Results</span>
 		</div>
+		<button mat-flat-button (click)="clickBack()" class ="back-button">
+			<i class="material-icons">keyboard_arrow_left</i>
+			Back
+		</button>
 	</div>
-	<ng-container *ngIf="surveyData">
-			<div class="Page-Title">
+	<div class="right-column">
+		<ng-container *ngIf="surveyData">
+			<div class="admin-title">
 				<span>{{currentPageIndex+1}}. {{questionPages[currentPageIndex].title}}</span>
 			</div>
-			<div class="Repeat_Grid_9_Class">
-				<div class="Survey_Question" *ngFor="let question of questionPages[currentPageIndex].questions;">
-					<label class="Question-Title">{{question.text}}</label>
-					<div class = "Scale-Question" *ngIf="question.type == qstTypeScale">
-						Average: {{getAverage(question)}}
-					</div>
-					<div class = "Response_Question" *ngIf="question.type == qstTypeResponse">
-						<p *ngFor="let survey of surveyData; let i = index;"> Response {{i+1}}: {{survey[question.label]}} </p>
-					</div>
-					<div class = "Hours_Question" *ngIf="question.type == qstTypeHours">
-						Average: {{getAverage(question)}}
-					</div>
+			<svg class="Line_2">
+				<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width=".5rem" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" d="M 0 0 L 4000 0">
+				</path>
+			</svg>
+			<div class="survey-question" *ngFor="let question of questionPages[currentPageIndex].questions;">
+				<label class="Question-Title">{{question.text}}</label>
+				<div class = "question-answer Scale-Question" *ngIf="question.type == qstTypeScale">
+					Average: {{getAverage(question)}}
+				</div>
+				<div class = "question-answer Response_Question" *ngIf="question.type == qstTypeResponse">
+					<p *ngFor="let survey of surveyData; let i = index;"> Response {{i+1}}: {{survey[question.label]}} </p>
+				</div>
+				<div class = "question-answer Hours_Question" *ngIf="question.type == qstTypeHours">
+					Average: {{getAverage(question)}}
 				</div>
 			</div>
 		</ng-container>
-		<div class="Group_21_Class">
-			<button mat-flat-button *ngIf="currentPageIndex > 0" (click)="changePage(-1)">
-				<i class="material-icons">keyboard_arrow_left</i>
-				Previous
-			</button>
+		<div class="bottom-buttons">
+			<div class = "bottom-button">
+				<button mat-flat-button *ngIf="currentPageIndex > 0" (click)="changePage(-1)">
+					<i class="material-icons">keyboard_arrow_left</i>
+					Previous
+				</button>
+			</div>
+			<div class = "bottom-button">
+				<button mat-flat-button *ngIf="currentPageIndex < questionPages.length-1" (click)="changePage(1)">
+					Next
+					<i class="material-icons">keyboard_arrow_right</i>
+				</button>
+			</div>	
 		</div>
-		<div class="Group_22_Class">
-			<button mat-flat-button *ngIf="currentPageIndex < questionPages.length-1" (click)="changePage(1)">
-				Next
-				<i class="material-icons">keyboard_arrow_right</i>
-			</button>
-	<div class="ID1__Learning_from_Labs_Class">
-		<span>1. Learning from Labs</span>
 	</div>
 </div>

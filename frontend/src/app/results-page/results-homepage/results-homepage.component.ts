@@ -166,7 +166,7 @@ export class ResultsHomepageComponent implements OnInit {
 
 
   constructor(
-    private stateService: StateService,
+    public stateService: StateService,
     private dataTransferService: DataTransferService,
     private router: Router
   ) { }

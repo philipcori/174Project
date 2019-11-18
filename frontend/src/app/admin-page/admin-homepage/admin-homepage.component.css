@@ -9,14 +9,6 @@
     --web-view-id: Upload_Page;
     --web-enable-deep-linking: true;
 }
-.Line_1 {
-    position: absolute;
-    width: 1rem;
-    height: 100vh;
-    left: 35rem;
-    top: 0px;
-    transform: matrix(1,0,0,1,0,0);
-}
 .admin-icon {
     overflow: visible;
     width: 15%;
