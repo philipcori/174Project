@@ -3,6 +3,7 @@ import { DataTransferService } from 'src/app/data-transfer.service';
 import { Observable } from 'rxjs';
 import { Router } from "@angular/router";
 import { StateService } from 'src/app/state.service';
+import { CookieService } from 'ngx-cookie-service';
 
 // Google's login API namespace
 declare var gapi:any;
@@ -32,6 +33,7 @@ export class LoginHomepageComponent {
       private _zone: NgZone,
       private dataTransferService: DataTransferService,
       public stateService: StateService,
+      public cookieService: CookieService,
       private router: Router
     ){
   }
@@ -40,7 +42,7 @@ export class LoginHomepageComponent {
   // rendering of a view.
   ngAfterViewInit() {
     // Converts the Google login button stub to an actual button.
-    this.stateService.gapi = gapi;
+    this.cookieService.set('gapi', gapi);
 
     gapi.signin2.render(
       this.googleLoginButtonId,
@@ -60,7 +62,7 @@ export class LoginHomepageComponent {
         
         httpObservable.subscribe((response) => {
           this.validLogin = true;
-          this.stateService.userType = response["type"];
+          this.cookieService.set('userType', response["type"]);
           let URL = this.redirectURLMap(response["type"]);
           if(URL == invalidURL){
             // Error for invalid user

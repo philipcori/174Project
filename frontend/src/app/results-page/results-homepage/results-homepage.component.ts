@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from "src/app/data-transfer.service"
 import { Router } from '@angular/router';
-import { StateService } from 'src/app/state.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-results-homepage',
@@ -166,7 +166,7 @@ export class ResultsHomepageComponent implements OnInit {
 
 
   constructor(
-    public stateService: StateService,
+    public cookieService: CookieService,
     private dataTransferService: DataTransferService,
     private router: Router
   ) { }
@@ -195,7 +195,6 @@ export class ResultsHomepageComponent implements OnInit {
   }
 
   clickBack(){
-    this.stateService.selectedSectionID;
     this.router.navigate(["/sections-page"]);
   }
 }

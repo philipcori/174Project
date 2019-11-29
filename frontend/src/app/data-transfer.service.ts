@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StateService } from './state.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class DataTransferService {
 
   constructor(
     private http: HttpClient,
-    private stateService: StateService
+    private cookieService: CookieService
   ) { }
 
   uploadFile(file:File){
@@ -33,24 +33,24 @@ export class DataTransferService {
   }
 
   submitSurvey(submission){
-    submission["student_email"] = this.stateService.userEmail;
-    submission["section_id"] = this.stateService.selectedSectionID;
-    submission["auth_token"] = this.stateService.userAuthToken;
+    submission["student_email"] = this.cookieService.get('userEmail');
+    submission["section_id"] = this.cookieService.get('selectedSectionID');
+    submission["auth_token"] = this.cookieService.get('userAuthToken');
 
     return this.http.post('/api/submit', submission, { responseType: 'text' });
   }
 
   getResults(){
     let submission = {
-      section_id: this.stateService.selectedSectionID
+      section_id: this.cookieService.get("selectedSectionID")
     }
     return this.http.post('/api/results', submission);
   }
 
   redirect(): Observable<any>{
     let request = {
-      email: this.stateService.userEmail,
-      access_token: this.stateService.userAuthToken
+      email: this.cookieService.get('userEmail'),
+      access_token: this.cookieService.get('userAuthToken')
     }
 
     return this.http.post('/api/redirect', request, { responseType: 'json' });
@@ -58,16 +58,16 @@ export class DataTransferService {
 
   getStudentSections(){
     let request = {
-      student_email: this.stateService.userEmail,
-      access_token: this.stateService.userAuthToken
+      student_email: this.cookieService.get('userEmail'),
+      access_token: this.cookieService.get('userAuthToken')
     }
     return this.http.post('/api/get_student_sections', request, { responseType: 'json' });
   }
 
   getProfessorSections(){
     let request = {
-      prof_email: this.stateService.userEmail,
-      access_token: this.stateService.userAuthToken
+      prof_email: this.cookieService.get('userEmail'),
+      access_token: this.cookieService.get('userAuthToken')
     }
 
     return this.http.post('/api/get_professor_sections', request, { responseType: 'json' });

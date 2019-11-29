@@ -5,7 +5,7 @@
 			</path>
 		</svg>
 		<div class="Welcome_Admin__Class">
-			<span>{{stateService.selectedSectionID}}: {{stateService.selectedSectionSubject}} {{stateService.selectedCatalogNum}} Survey Results</span>
+			<span>{{cookieService.get('selectedSectionID')}}: {{cookieService.get('selectedSectionSubject')}} {{cookieService.get('selectedCatalogNum')}} Survey Results</span>
 		</div>
 		<button mat-flat-button (click)="clickBack()" class ="back-button">
 			<i class="material-icons">keyboard_arrow_left</i>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from 'src/app/state.service';
 import { DataTransferService } from 'src/app/data-transfer.service';
 import { HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 // User types
 const userStudent: string = "student";
@@ -16,9 +16,9 @@ const userProfessor:  string = "professor";
 export class SectionsHomepageComponent implements OnInit {
 
   constructor(
-    public stateService: StateService,
     private dataTransferService: DataTransferService,
-    private router:Router
+    private router:Router,
+    public cookieService: CookieService
   ) { }
   sectionsArray: any = null;
   /*
@@ -31,12 +31,12 @@ export class SectionsHomepageComponent implements OnInit {
   */
 
   ngOnInit() {
-    if(this.stateService.userType === userStudent){
+    if(this.cookieService.get('userType') === userStudent){
       this.dataTransferService.getStudentSections().subscribe((response)=>{
         this.sectionsArray = response;
       });
     }
-    else if(this.stateService.userType === userProfessor){
+    else if(this.cookieService.get('userType') === userProfessor){
       this.dataTransferService.getProfessorSections().subscribe((response)=>{
         this.sectionsArray = response;
       });
@@ -51,14 +51,16 @@ export class SectionsHomepageComponent implements OnInit {
   }
   
   clickSection(index: number){
-    this.stateService.selectedSectionID = this.sectionsArray[index].section_id;
-    this.stateService.selectedSectionSubject = this.sectionsArray[index].course_subject;
-    this.stateService.selectedCatalogNum = this.sectionsArray[index].catalog_num;  
-    
-    if(this.stateService.userType === userStudent){
+    this.cookieService.set("selectedSectionID", this.sectionsArray[index].section_id);
+    this.cookieService.set("selectedSectionSubject", this.sectionsArray[index].course_subject);
+    this.cookieService.set("selectedCatalogNum", this.sectionsArray[index].catalog_num);
+
+
+
+    if(this.cookieService.get('userType') === userStudent){
       this.router.navigate(["survey-page"]);
     }
-    else if(this.stateService.userType === userProfessor){
+    else if(this.cookieService.get('userType') === userProfessor){
       this.router.navigate(["results-page"]);
     }
     else{

@@ -1,12 +1,12 @@
 <div class="login-wrapper">
     <div class="login">
-        <div class="centered login-text" *ngIf="!stateService.loggedInUser">
+        <div class="centered login-text" *ngIf="!cookieService.get('loggedInUser')">
             <p>Please log in to you SCU email below</p>
         </div>
         <div class="g-signin2" id="{{googleLoginButtonId}}"></div>
-        <div class="centered login-text" *ngIf="stateService.loggedInUser">
+        <div class="centered login-text" *ngIf="cookieService.get('loggedInUser')">
             <ng-container *ngIf="validLogin">
-                <p>Logged in with {{stateService.userEmail}}!</p>
+                <p>Logged in with {{cookieService.get('userEmail')}}!</p>
                 <p>Redirecting shortly...</p>
             </ng-container>
             <ng-container *ngIf="!validLogin">
