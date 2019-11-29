@@ -11,6 +11,11 @@
 			<i class="material-icons">keyboard_arrow_left</i>
 			Back
 		</button>
+		<div class="logout-button">
+			<button mat-flat-button (click)="clickLogout()">
+					Logout
+			</button>
+		</div>
 	</div>
 	<div class="right-column">
 		<ng-container *ngIf="surveyData">

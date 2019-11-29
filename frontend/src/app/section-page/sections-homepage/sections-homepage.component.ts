@@ -3,6 +3,7 @@ import { DataTransferService } from 'src/app/data-transfer.service';
 import { HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { StateService } from 'src/app/state.service';
 
 // User types
 const userStudent: string = "student";
@@ -18,7 +19,8 @@ export class SectionsHomepageComponent implements OnInit {
   constructor(
     private dataTransferService: DataTransferService,
     private router:Router,
-    public cookieService: CookieService
+    public cookieService: CookieService,
+    private stateService: StateService
   ) { }
   sectionsArray: any = null;
   /*
@@ -68,6 +70,8 @@ export class SectionsHomepageComponent implements OnInit {
     }
   }
 
-
-
+  clickLogout(){
+    this.stateService.logout();
+    this.router.navigate(["login"]);
+  }
 }

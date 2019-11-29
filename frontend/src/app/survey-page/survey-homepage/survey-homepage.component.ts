@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from 'src/app/data-transfer.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-survey-homepage',
@@ -168,6 +169,7 @@ export class SurveyHomepageComponent implements OnInit {
 
   constructor(
     private dataTransferService: DataTransferService,
+    private stateService: StateService,
     public cookieService: CookieService,
     private router: Router
   ) { }
@@ -209,5 +211,8 @@ export class SurveyHomepageComponent implements OnInit {
 
     });    
   }
-
+  clickLogout(){
+    this.stateService.logout();
+    this.router.navigate(["login"]);
+  }
 }

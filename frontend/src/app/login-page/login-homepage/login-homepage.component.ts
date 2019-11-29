@@ -28,6 +28,7 @@ const invalidURL: string = "survey-page";
 export class LoginHomepageComponent {
   googleLoginButtonId = "google-login-button";
   validLogin = true;
+  noServerError = true;
 
   constructor(
       private _zone: NgZone,
@@ -37,21 +38,37 @@ export class LoginHomepageComponent {
       private router: Router
     ){
   }
+  ngOnInit(){
+    if(this.stateService.justLoggedOut === true){
+      this.stateService.justLoggedOut = false;
+      location.reload();
+    }
+  }
 
   // Angular hook that allows for interaction with elements inserted by the
   // rendering of a view.
   ngAfterViewInit() {
     // Converts the Google login button stub to an actual button.
-    this.cookieService.set('gapi', gapi);
-
     gapi.signin2.render(
       this.googleLoginButtonId,
       {
         "onSuccess": this.onGoogleLoginSuccess,
         "scope": "profile",
         "theme": "dark"
-      });
+      }
+    );
   }
+
+  // ngAfterViewChecked(){
+  //   // Converts the Google login button stub to an actual button.
+  //   gapi.signin2.render(
+  //     this.googleLoginButtonId,
+  //     {
+  //       "onSuccess": this.onGoogleLoginSuccess,
+  //       "scope": "profile",
+  //       "theme": "dark"
+  //     });
+  // }
 
   // Triggered after a user successfully logs in using the Google external
   // login provider.
@@ -59,23 +76,31 @@ export class LoginHomepageComponent {
     this._zone.run(() => {
         this.stateService.login(loggedInUser);
         let httpObservable:Observable<any> = this.dataTransferService.redirect();
-        
+
         httpObservable.subscribe((response) => {
           this.validLogin = true;
+          this.noServerError = true;
           this.cookieService.set('userType', response["type"]);
           let URL = this.redirectURLMap(response["type"]);
-          if(URL == invalidURL){
+          if(URL === invalidURL){
             // Error for invalid user
             console.log("User not on list of approved users");
             this.validLogin = false;
           }
           else{
             this.router.navigate([URL]);
+            return true;
           }
         }, error => {
           console.log("Invalid login error")          
-          this.validLogin = false;
+          this.noServerError = false;
         });
+    });
+  }
+
+  onGoogleLoginFailure = (loggedInUser) => {
+    this._zone.run(() => {
+        console.log("User failure");
     });
   }
 

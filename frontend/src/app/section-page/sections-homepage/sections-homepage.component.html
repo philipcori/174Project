@@ -7,6 +7,11 @@
         <div class="Welcome_Admin__Class">
             <span>Welcome {{cookieService.get('userDisplayName')}}!</span>
         </div>
+        <div class="logout-button">
+            <button mat-flat-button (click)="clickLogout()">
+                    Logout
+            </button>
+        </div>
     </div>
     <div class="right-column">
         <div class="admin-title">

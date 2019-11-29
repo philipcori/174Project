@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from "src/app/data-transfer.service"
+import { Router } from '@angular/router';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -8,7 +10,11 @@ import { DataTransferService } from "src/app/data-transfer.service"
 })
 export class AdminHomepageComponent implements OnInit {
 
-  constructor(private dataTransferService: DataTransferService) { }
+  constructor(
+    private dataTransferService: DataTransferService,
+    private router: Router,
+    private stateService: StateService
+  ) { }
 
   ngOnInit() {
   }
@@ -19,5 +25,10 @@ export class AdminHomepageComponent implements OnInit {
 
   clickSend(){
     this.dataTransferService.sendSurvey();
+  }
+
+  clickLogout(){
+    this.stateService.logout();
+    this.router.navigate(["login"]);
   }
 }

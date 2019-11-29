@@ -172,6 +172,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 :host /deep/ .mat-radio-label-content {
-      padding-left: 0px;
-      padding-top: 1rem;
+    padding-left: 0px;
+    padding-top: 1rem;
+}
+
+.logout-button{
+    position: fixed;
+    bottom: .5rem;
+    left: .5rem;
 }

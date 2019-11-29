@@ -12,7 +12,10 @@
             <ng-container *ngIf="!validLogin">
                 <p>Invalid login, try logging out and making sure you are logged in with your SCU account.</p>
             </ng-container>
-            <button (click)="signOut()">Sign out</button>
+            <ng-container *ngIf="!noServerError">
+                <p>Connection to server failed.</p>
+            </ng-container>
+            <button mat-flat-button (click)="signOut()">Sign out</button>
         </div>
     </div>
 </div>

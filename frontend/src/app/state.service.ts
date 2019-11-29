@@ -14,6 +14,8 @@ export class StateService {
     private cookieService: CookieService
   ) { }
 
+  public justLoggedOut: boolean = false;
+
   login(loggedInUser:any){
     // this.loggedInUser = loggedInUser;
     // this.userAuthToken = loggedInUser.getAuthResponse().id_token;
@@ -27,7 +29,12 @@ export class StateService {
   }
 
   logout(){
-    gapi.auth2.getAuthInstance().disconnect();
+    this.cookieService.deleteAll();
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+      gapi.auth2.getAuthInstance().disconnect()
+    });
+    this.justLoggedOut = true;
     // this.loggedInUser = null;
     // this.userAuthToken = null;
     // this.userDisplayName = "";
@@ -36,7 +43,6 @@ export class StateService {
     // this.selectedSectionID = null; 
     // this.selectedSectionSubject = null;
     // this.selectedCatalogNum = null; 
-    this.cookieService.deleteAll();
   }
 
   removeSectionSelection(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataTransferService } from "src/app/data-transfer.service"
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-results-homepage',
@@ -168,6 +169,7 @@ export class ResultsHomepageComponent implements OnInit {
   constructor(
     public cookieService: CookieService,
     private dataTransferService: DataTransferService,
+    private stateService: StateService,
     private router: Router
   ) { }
 
@@ -196,5 +198,9 @@ export class ResultsHomepageComponent implements OnInit {
 
   clickBack(){
     this.router.navigate(["/sections-page"]);
+  }
+  clickLogout(){
+    this.stateService.logout();
+    this.router.navigate(["login"]);
   }
 }
