@@ -1,0 +1,57 @@
+<div id="Upload_Page" class="Upload_Page_Class ">
+	<div class="left-column">
+		<svg class="Line_1">
+			<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width="5px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Line_1_Class" d="M 0 0 L 0 4000">
+			</path>
+		</svg>
+		<div class="Welcome_Admin__Class">
+			<span>{{cookieService.get('selectedSectionID')}}: {{cookieService.get('selectedSectionSubject')}} {{cookieService.get('selectedCatalogNum')}} Survey Results</span>
+		</div>
+		<button mat-flat-button (click)="clickBack()" class ="back-button">
+			<i class="material-icons">keyboard_arrow_left</i>
+			Back
+		</button>
+		<div class="logout-button">
+			<button mat-flat-button (click)="clickLogout()">
+					Logout
+			</button>
+		</div>
+	</div>
+	<div class="right-column">
+		<ng-container *ngIf="surveyData">
+			<div class="admin-title">
+				<span>{{currentPageIndex+1}}. {{questionPages[currentPageIndex].title}}</span>
+			</div>
+			<svg class="Line_2">
+				<path fill="transparent" stroke="rgba(112,112,112,1)" stroke-width=".5rem" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" d="M 0 0 L 4000 0">
+				</path>
+			</svg>
+			<div class="survey-question" *ngFor="let question of questionPages[currentPageIndex].questions;">
+				<label class="Question-Title">{{question.text}}</label>
+				<div class = "question-answer Scale-Question" *ngIf="question.type == qstTypeScale">
+					Average: {{getAverage(question)}}
+				</div>
+				<div class = "question-answer Response_Question" *ngIf="question.type == qstTypeResponse">
+					<p *ngFor="let survey of surveyData; let i = index;"> Response {{i+1}}: {{survey[question.label]}} </p>
+				</div>
+				<div class = "question-answer Hours_Question" *ngIf="question.type == qstTypeHours">
+					Average: {{getAverage(question)}}
+				</div>
+			</div>
+		</ng-container>
+		<div class="bottom-buttons">
+			<div class = "bottom-button">
+				<button mat-flat-button *ngIf="currentPageIndex > 0" (click)="changePage(-1)">
+					<i class="material-icons">keyboard_arrow_left</i>
+					Previous
+				</button>
+			</div>
+			<div class = "bottom-button">
+				<button mat-flat-button *ngIf="currentPageIndex < questionPages.length-1" (click)="changePage(1)">
+					Next
+					<i class="material-icons">keyboard_arrow_right</i>
+				</button>
+			</div>	
+		</div>
+	</div>
+</div>

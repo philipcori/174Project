@@ -1,0 +1,19 @@
+.mat-dialog-title{
+    padding: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.mat-dialog-content{
+    text-align: center;
+}
+
+.mat-dialog-actions{
+    float: right;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+}
+
+.p{
+    margin: 0px;
+}
