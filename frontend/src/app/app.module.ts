@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTransferService } from "src/app/data-transfer.service";
 import { CookieService } from "ngx-cookie-service";
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CookieService } from "ngx-cookie-service";
   ],
   providers: [
     DataTransferService,
-    CookieService
+    CookieService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

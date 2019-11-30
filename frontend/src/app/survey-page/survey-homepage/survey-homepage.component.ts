@@ -3,6 +3,8 @@ import { DataTransferService } from 'src/app/data-transfer.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { StateService } from 'src/app/state.service';
+import { MatDialog } from '@angular/material';
+import { IncompleteModalComponent } from '../incomplete-modal/incomplete-modal.component'
 
 @Component({
   selector: 'app-survey-homepage',
@@ -171,10 +173,23 @@ export class SurveyHomepageComponent implements OnInit {
     private dataTransferService: DataTransferService,
     private stateService: StateService,
     public cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(IncompleteModalComponent, {
+      width: '40vw'
+    });
+
+    console.log(dialogRef)
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 
@@ -196,21 +211,34 @@ export class SurveyHomepageComponent implements OnInit {
       section_id: null,
       auth_token: null
     }
+
+    // Validate
+    let questionsUnanswered = false;
+
     this.questionPages.forEach(questionPage =>{
       questionPage.questions.forEach(question =>{
         submission[question.label] = question.answer;
+        if(!question.answer){
+          questionsUnanswered = true;
+        }
       })
     })
 
-    // TODO - validate
-
-    console.log(submission);
-    this.dataTransferService.submitSurvey(submission).subscribe((response) => {
+    if(questionsUnanswered){
+      this.openDialog();
+    }
+    else{
+      this.dataTransferService.submitSurvey(submission).subscribe((response) => {
         console.log('response received is ', response);
         this.router.navigate(["sections-page"]);
-
-    });    
+      });    
+    }
   }
+  
+  clickBack(){
+    this.router.navigate(["/sections-page"]);
+  }
+
   clickLogout(){
     this.stateService.logout();
     this.router.navigate(["login"]);

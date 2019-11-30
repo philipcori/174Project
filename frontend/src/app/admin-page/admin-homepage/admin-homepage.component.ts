@@ -15,6 +15,9 @@ export class AdminHomepageComponent implements OnInit {
     private router: Router,
     private stateService: StateService
   ) { }
+  public sendDate: Date = null;
+  public endDate: Date = null;
+  public minDate: Date = new Date();
 
   ngOnInit() {
   }
@@ -25,6 +28,11 @@ export class AdminHomepageComponent implements OnInit {
 
   clickSend(){
     this.dataTransferService.sendSurvey();
+  }
+
+
+  clickScheduleSend(){
+    this.dataTransferService.sendSurveyDates(this.sendDate, this.endDate);
   }
 
   clickLogout(){

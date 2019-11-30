@@ -17,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     left: 45rem;
     top: 2rem;
     width: 65rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .Repeat_Grid_9_Class {

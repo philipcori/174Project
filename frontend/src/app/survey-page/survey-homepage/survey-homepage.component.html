@@ -7,6 +7,10 @@
         <div class="Welcome_Admin__Class">
             <span>Survey for {{cookieService.get('selectedSectionID')}}: {{cookieService.get('selectedSectionSubject')}} {{cookieService.get('selectedCatalogNum')}}</span>
         </div>
+        <button mat-flat-button (click)="clickBack()" class ="back-button">
+            <i class="material-icons">keyboard_arrow_left</i>
+            Back
+        </button>
         <div class="logout-button">
             <button mat-flat-button (click)="clickLogout()">
                     Logout

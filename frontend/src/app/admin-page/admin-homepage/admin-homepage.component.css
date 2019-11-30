@@ -40,3 +40,9 @@
 .right-align {
     float: right;
 }
+
+.date-hidden {
+    visibility: hidden !important;
+    margin-left: calc(50% - 148px);
+    height: 0px !important;
+}

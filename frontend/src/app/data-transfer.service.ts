@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class DataTransferService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private datePipe: DatePipe
   ) { }
 
   uploadFile(file:File){
@@ -28,6 +30,20 @@ export class DataTransferService {
   sendSurvey(){
     let request:any = null;
     this.http.post('/api/schedule', request).subscribe((response) => {
+      console.log('response received is ', response);
+    })
+  }
+
+  sendSurveyDates(sendDate: Date, endDate: Date){
+    let dateType = "MM/dd/yyyy"
+    
+    let request:any = {
+      send_date: this.datePipe.transform(sendDate, dateType),
+      end_date: this.datePipe.transform(endDate, dateType)
+    };
+
+    console.log(request)
+    this.http.post('/api/schedule_send', request).subscribe((response) => {
       console.log('response received is ', response);
     })
   }
