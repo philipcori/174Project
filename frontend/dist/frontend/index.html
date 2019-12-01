@@ -13,24 +13,10 @@
     <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
     <app-root></app-root>
     <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
     </script>
     <script type="text/javascript">
       var calculatedFontSize = (window.innerWidth * (16 / 1920));
       document.querySelector("html").style.fontSize = (calculatedFontSize < 8 ? 8 : calculatedFontSize) + "px";
     </script>
-  <script src="runtime-es2015.4c0cd243097d9ea3bdd3.js" type="module"></script><script src="runtime-es5.4c0cd243097d9ea3bdd3.js" nomodule defer></script><script src="polyfills-es5.931f63c2feef40f602a6.js" nomodule defer></script><script src="polyfills-es2015.0ef207fb7b4761464817.js" type="module"></script><script src="main-es2015.a9fa7f9b50a83cd7b529.js" type="module"></script><script src="main-es5.a9fa7f9b50a83cd7b529.js" nomodule defer></script></body>
+  <script src="runtime-es2015.2e3e83f536d8d396c351.js" type="module"></script><script src="runtime-es5.2e3e83f536d8d396c351.js" nomodule defer></script><script src="polyfills-es5.189f07b44baee2ffc7a6.js" nomodule defer></script><script src="polyfills-es2015.db02a77d82edc4cfe715.js" type="module"></script><script src="main-es2015.edffc7bb2874947aaaa9.js" type="module"></script><script src="main-es5.edffc7bb2874947aaaa9.js" nomodule defer></script></body>
 </html>

@@ -17,10 +17,6 @@ export class StateService {
   public justLoggedOut: boolean = false;
 
   login(loggedInUser:any){
-    // this.loggedInUser = loggedInUser;
-    // this.userAuthToken = loggedInUser.getAuthResponse().id_token;
-    // this.userDisplayName = loggedInUser.getBasicProfile().getName();
-    // this.userEmail = loggedInUser.getBasicProfile().getEmail();
     this.cookieService.set('loggedInUser', loggedInUser, 1);
     this.cookieService.set('userAuthToken', loggedInUser.getAuthResponse().id_token);
     this.cookieService.set('userDisplayName', loggedInUser.getBasicProfile().getName());
@@ -35,20 +31,9 @@ export class StateService {
       gapi.auth2.getAuthInstance().disconnect()
     });
     this.justLoggedOut = true;
-    // this.loggedInUser = null;
-    // this.userAuthToken = null;
-    // this.userDisplayName = "";
-    // this.userEmail = null;
-    // this.userType = null;
-    // this.selectedSectionID = null; 
-    // this.selectedSectionSubject = null;
-    // this.selectedCatalogNum = null; 
   }
 
   removeSectionSelection(){
-    // this.selectedSectionID = null;
-    // this.selectedSectionSubject = null;
-    // this.selectedCatalogNum = null;
     this.cookieService.delete("selectedSectionID");
     this.cookieService.delete("selectedSectionSubject");
     this.cookieService.delete("selectedCatalogNum");

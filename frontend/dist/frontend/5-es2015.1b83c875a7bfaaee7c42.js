@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{x3LC:function(n,o,s){"use strict";s.r(o),s.d(o,"AdminPageModule",(function(){return c}));class c{}}}]);
