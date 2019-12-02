@@ -118,6 +118,7 @@ function upload(fileBuffer) {
     	'studentIds': studentIds,
     	'studentEmails': studentEmails
 	}
+	console.log(excelData);
 	if(!excelData.classNbrs || !excelData.subjects || !excelData.catalogNbrs || !excelData.courseTitles ||
 		!excelData.instructorEmails || !excelData.instructorNames || !excelData.studentIds || !excelData.studentEmails) {
 		return -1;
