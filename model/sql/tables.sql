@@ -1,5 +1,6 @@
 -- drop tables
 
+DROP TABLE `Admin`
 DROP TABLE Attends;
 DROP TABLE Assists;
 DROP TABLE Survey;
@@ -7,7 +8,6 @@ DROP TABLE Section;
 DROP TABLE Professor;
 DROP TABLE TA;
 DROP TABLE Student;
-
 
 -- create tables for entities
 CREATE TABLE Professor
