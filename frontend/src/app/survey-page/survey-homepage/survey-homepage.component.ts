@@ -185,16 +185,9 @@ export class SurveyHomepageComponent implements OnInit {
       width: '40vw'
     });
 
-    console.log(dialogRef)
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      
     });
-  }
-
-
-  changeChoice(answer){
-    console.log(answer);
   }
 
   changePage(increment: number){

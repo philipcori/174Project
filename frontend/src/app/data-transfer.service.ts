@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { DatePipe } from '@angular/common';
 
-const baseURL: string = "https://coen174eles.herokuapp.com:8080"
+const baseURL: string = "https://coen174eles.herokuapp.com"
 // const baseURL: string = "http://localhost:8080"
 
 

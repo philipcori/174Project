@@ -12,7 +12,6 @@ export class IncompleteModalComponent {
     public dialogRef: MatDialogRef<IncompleteModalComponent>) {}
 
   onOkClick(): void {
-    console.log("Okay clicked")
     this.dialogRef.close();
   }
 }

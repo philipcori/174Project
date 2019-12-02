@@ -29,7 +29,7 @@
             <div class="admin-box-border survey-question" *ngFor="let question of questionPages[currentPageIndex].questions;">
                 <label class="Question-Title">{{question.text}}</label>
                 <div class = "Scale-Question" *ngIf="question.type == qstTypeScale">
-                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer" (change)="changeChoice(question.answer)">
+                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer">
                         <mat-radio-button class="Multiple-Choice" *ngFor="let scaleOption of scaleOptions" [value]="scaleOption">
                             {{scaleOption}}
                         </mat-radio-button>   
@@ -47,7 +47,7 @@
                     </mat-form-field>
                 </div>
                 <div class = "Hours_Question" *ngIf="question.type == qstTypeHours">
-                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer" (change)="changeChoice(question.answer)">
+                    <mat-radio-group class="Multiple-Choices" [(ngModel)]="question.answer">
                         <mat-radio-button class="Multiple-Choice" *ngFor="let hoursOption of hoursOptions" [value]="hoursOption">
                             {{hoursOption}}
                         </mat-radio-button>   
