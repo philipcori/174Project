@@ -19,6 +19,12 @@ const xlsx = require('node-xlsx');
  * Constraint: File must be file type of .xlsx in correct format
  */
 router.post('/', uploadService.single('uploadedFile'), (req, res) => {
+	var splits = req.file.originalname.split('.')
+	var fileExtension = splits[splits.length - 1]
+	if (fileExtension.localeCompare('xlsx') != 0) {
+		res.sendStatus(415)
+		return
+	}
     var fileBuffer = req.file.buffer
     let email = req.body.adminEmail
     connection.query(
