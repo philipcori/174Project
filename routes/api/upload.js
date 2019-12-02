@@ -34,8 +34,10 @@ router.post('/', uploadService.single('uploadedFile'), (req, res) => {
             if (err) console.error(err)
             else {
                 if (result.length > 0) {
-                    upload(fileBuffer)
-                    res.sendStatus(200)
+                    if(upload(fileBuffer) == -1)
+                    	res.sendStatus(415);
+                    else
+                    	res.sendStatus(200)
                 } else {
                     res.sendStatus(403)
                 }
@@ -101,17 +103,20 @@ function upload(fileBuffer) {
     var studentIds = []
 	var studentEmails = []
     var data = obj[0].data
+    var flag = 0;
     for(var i = 1; i < data.length; i++) {
 		if (!data[i][classNbrColumn]) break
-		classNbrs.push(data[i][classNbrColumn])
-		subjects.push(data[i][subjectColumn])
-		catalogNumbers.push(data[i][catalogNumberColumn])
-		courseTitles.push(data[i][courseTitleColumn])
-		instructorEmails.push(data[i][instructorEmailColumn])
-		instructorNames.push(data[i][instructorNameColumn])
-    	studentIds.push(data[i][studentIdColumn])
-    	studentEmails.push(data[i][studentEmailColumn])
+		data[i][classNbrColumn] ? classNbrs.push(data[i][classNbrColumn]) : flag = 1;
+		data[i][subjectColumn] ? subjects.push(data[i][subjectColumn]) : flag = 1;
+		data[i][catalogNumberColumn] ? catalogNumbers.push(data[i][catalogNumberColumn]) : flag = 1;
+		data[i][courseTitleColumn] ? courseTitles.push(data[i][courseTitleColumn]) : flag = 1;
+		data[i][instructorEmailColumn] ? instructorEmails.push(data[i][instructorEmailColumn]) : flag = 1;
+		data[i][instructorNameColumn] ? instructorNames.push(data[i][instructorNameColumn]) : flag = 1;
+    	data[i][studentIdColumn] ? studentIds.push(data[i][studentIdColumn]) : flag = 1;
+    	data[i][studentEmailColumn] ? studentEmails.push(data[i][studentEmailColumn]) : flag = 1;
     }
+    if(flag)
+    	return -1;
     var excelData = {
 		'classNbrs': classNbrs,
 		'subjects': subjects,
