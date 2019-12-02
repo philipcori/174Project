@@ -28,10 +28,10 @@ router.post('/', uploadService.single('uploadedFile'), (req, res) => {
             if (err) console.error(err)
             else {
                 if (result.length > 0) {
-                    if(upload(fileBuffer) == -1) {
+                    if(upload(fileBuffer) == -1)
                     	res.sendStatus(415);
-                    }
-                    res.sendStatus(200)
+                    else
+                    	res.sendStatus(200)
                 } else {
                     res.sendStatus(403)
                 }
