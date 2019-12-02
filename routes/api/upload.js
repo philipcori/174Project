@@ -99,14 +99,14 @@ function upload(fileBuffer) {
     var data = obj[0].data
     for(var i = 1; i < data.length; i++) {
 		if (!data[i][classNbrColumn]) break
-		classNbrs.push(data[i][classNbrColumn])
-		subjects.push(data[i][subjectColumn])
-		catalogNumbers.push(data[i][catalogNumberColumn])
-		courseTitles.push(data[i][courseTitleColumn])
-		instructorEmails.push(data[i][instructorEmailColumn])
-		instructorNames.push(data[i][instructorNameColumn])
-    	studentIds.push(data[i][studentIdColumn])
-    	studentEmails.push(data[i][studentEmailColumn])
+		data[i][classNbrColumn] ? classNbrs.push(data[i][classNbrColumn]) : ;
+		data[i][subjectColumn] ? subjects.push(data[i][subjectColumn]) : ;
+		data[i][catalogNumberColumn] ? catalogNumbers.push(data[i][catalogNumberColumn]) : ;
+		data[i][courseTitleColumn] ? courseTitles.push(data[i][courseTitleColumn]) : ;
+		data[i][instructorEmailColumn] ? instructorEmails.push(data[i][instructorEmailColumn]) : ;
+		data[i][instructorNameColumn] ? instructorNames.push(data[i][instructorNameColumn]) : ;
+    	data[i][studentIdColumn] ? studentIds.push(data[i][studentIdColumn]) : ;
+    	data[i][studentEmailColumn] ? studentEmails.push(data[i][studentEmailColumn]) : ;
     }
     var excelData = {
 		'classNbrs': classNbrs,
@@ -119,8 +119,9 @@ function upload(fileBuffer) {
     	'studentEmails': studentEmails
 	}
 	console.log(excelData);
-	if(!excelData.classNbrs || !excelData.subjects || !excelData.catalogNbrs || !excelData.courseTitles ||
-		!excelData.instructorEmails || !excelData.instructorNames || !excelData.studentIds || !excelData.studentEmails) {
+	if(excelData.classNbrs.length < 1 || excelData.subjects.length < 1 || excelData.catalogNbrs.length < 1
+	 || excelData.courseTitles.length < 1 || excelData.instructorEmails.length < 1 || excelData.instructorNames.length < 1 
+	 || excelData.studentIds.length < 1 || excelData.studentEmails.length < 1) {
 		return -1;
 	}
 	insertExcelDataIntoDB(excelData)
