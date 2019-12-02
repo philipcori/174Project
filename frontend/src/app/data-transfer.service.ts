@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { DatePipe } from '@angular/common';
 
+const baseURL: string = "https://coen174eles.herokuapp.com:8080"
+// const baseURL: string = "http://localhost:8080"
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,14 +26,14 @@ export class DataTransferService {
     formData.append("uploadedFile", file[0], file[0].name);
     console.log(formData)
 
-    this.http.post('/api/upload', formData).subscribe((response) => {
+    this.http.post(baseURL + '/api/upload', formData).subscribe((response) => {
       console.log('response received is ', response);
     })
   }
 
   sendSurvey(){
     let request:any = null;
-    this.http.post('/api/schedule', request).subscribe((response) => {
+    this.http.post(baseURL + '/api/schedule', request).subscribe((response) => {
       console.log('response received is ', response);
     })
   }
@@ -43,7 +47,7 @@ export class DataTransferService {
     };
 
     console.log(request)
-    this.http.post('/api/schedule_send', request).subscribe((response) => {
+    this.http.post(baseURL + '/api/schedule_send', request).subscribe((response) => {
       console.log('response received is ', response);
     })
   }
@@ -53,14 +57,14 @@ export class DataTransferService {
     submission["section_id"] = this.cookieService.get('selectedSectionID');
     submission["auth_token"] = this.cookieService.get('userAuthToken');
 
-    return this.http.post('/api/submit', submission, { responseType: 'text' });
+    return this.http.post(baseURL + '/api/submit', submission, { responseType: 'text' });
   }
 
   getResults(){
     let submission = {
       section_id: this.cookieService.get("selectedSectionID")
     }
-    return this.http.post('/api/results', submission);
+    return this.http.post(baseURL + '/api/results', submission);
   }
 
   redirect(): Observable<any>{
@@ -69,7 +73,7 @@ export class DataTransferService {
       access_token: this.cookieService.get('userAuthToken')
     }
 
-    return this.http.post('/api/redirect', request, { responseType: 'json' });
+    return this.http.post(baseURL + '/api/redirect', request, { responseType: 'json' });
   }
 
   getStudentSections(){
@@ -77,7 +81,7 @@ export class DataTransferService {
       student_email: this.cookieService.get('userEmail'),
       access_token: this.cookieService.get('userAuthToken')
     }
-    return this.http.post('/api/get_student_sections', request, { responseType: 'json' });
+    return this.http.post(baseURL + '/api/get_student_sections', request, { responseType: 'json' });
   }
 
   getProfessorSections(){
@@ -86,6 +90,6 @@ export class DataTransferService {
       access_token: this.cookieService.get('userAuthToken')
     }
 
-    return this.http.post('/api/get_professor_sections', request, { responseType: 'json' });
+    return this.http.post(baseURL + '/api/get_professor_sections', request, { responseType: 'json' });
   }
 }
