@@ -5,6 +5,10 @@ const multer = require('multer');
 var uploadService = multer({ storage: multer.memoryStorage() });
 const xlsx = require('node-xlsx');
 const nodemailer = require('nodemailer')
+const cron = require('node-cron')
+
+var emailDistributionDate = ''
+var surveyExpirationDate = ''
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -128,7 +132,46 @@ router.post('/api/results', function(req, res, next) {
   )
 });
 
-router.post('/api/schedule', function(req, res) {
+router.post('/api/schedule_send', function(req, res) {
+	emailDistributionDate = req.body.send_date
+	surveyExpirationDate = req.body.end_date
+	res.sendStatus(200)
+});
+
+cron.schedule('0 30 16 * * *', () => {
+	console.log('checking to start survey')
+	date = getDate()
+	if (date.localeCompare(emailDistributionDate) == 0) {
+		distributeEmails()
+		updateSectionsActivity(true)
+	}
+})
+
+cron.schedule('0 45 16 * * *', () => {
+	console.log('checking to end survey period')
+	date = getDate()
+	if (date.localeCompare(surveyExpirationDate) == 0) {
+		updateSectionsActivity(false)
+	}
+})
+
+function updateSectionsActivity(activity) {
+	connection.query(
+		'UPDATE Section SET survey_period_active = ?', 
+		activity,
+		(err, result) => {
+			if (err) console.error(err)
+			else {
+				if (activity)
+					console.log('Sections now active for surveying')
+				else
+					console.log('Sections now non-active for surveying')
+			}
+		}
+	)
+}
+
+function distributeEmails() {
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -136,27 +179,37 @@ router.post('/api/schedule', function(req, res) {
 		  pass: '174Project'
 		}
 	});
-	var mailOptions = {
-		from: 'engineeringlabsurvey@gmail.com',
-		to: 'pcori@scu.edu',
-		subject: 'Engineering Lab Evaluations',
-		text: 'Please follow the link to fill out your engineering lab evaluation surveys: http://localhost:4200/login'
-	};
-	transporter.sendMail(mailOptions, function(error, info){
-		if (error) {
-			  res.send(error)
-		} else {
-			  res.send('Email sent: ' + info.response)
+	connection.query(
+		'SELECT student_email FROM Student', 
+		(err, results) => {
+			if (err) console.log(err)
+			else {
+				for (key in results) {
+					var mailOptions = {
+						from: 'engineeringlabsurvey@gmail.com',
+						to: results[key].student_email,
+						subject: 'Engineering Lab Evaluations',
+						text: 'Please follow the link to fill out your engineering lab evaluation surveys: https://coen174-eles-frontend.herokuapp.com/'
+					};
+					transporter.sendMail(mailOptions, function(error, info){
+						if (error) {
+							  console.error(error)
+						} else {
+							  console.log(`Email sent to ${mailOptions.to}`)
+						}
+					});
+				}
+			}
 		}
-	});
-});
+	)
+}
 
 router.post('/api/get_student_sections', (req, res) => {
 	connection.query(
-		'SELECT section_id, course_subject, catalog_num, course_title FROM Section WHERE section_id = \
+		'SELECT section_id, course_subject, catalog_num, course_title FROM Section WHERE survey_period_active = ? AND section_id = \
 (SELECT section_id FROM Attends WHERE filled_out = FALSE AND student_id = \
 (SELECT student_id FROM Student WHERE student_email = ?))', 
-		req.body.student_email, 
+		[true, req.body.student_email], 
 		(err, result) => {
 			if (err) console.log(err)
 			else res.send(result)
@@ -166,8 +219,8 @@ router.post('/api/get_student_sections', (req, res) => {
 
 router.post('/api/get_professor_sections', (req, res) => {
 	connection.query(
-		'SELECT section_id, course_subject, catalog_num, course_title FROM Section WHERE professor_email = ?',
-		req.body.prof_email,
+		'SELECT section_id, course_subject, catalog_num, course_title FROM Section WHERE professor_email = ? AND survey_period_active = ?',
+		[req.body.prof_email, false],
 		(err, result) => {
 			if (err) console.log(err)
 			else res.send(result)
@@ -250,8 +303,8 @@ function insertExcelDataIntoDB(excelData) {
 			}
 		)
 		connection.query(
-			'INSERT INTO Section VALUES (?, ?, ?, ?, ?)',
-			[sectionId, instructorEmail, subject, catalogNbr, courseTitle],
+			'INSERT INTO Section VALUES (?, ?, ?, ?, ?, ?)',
+			[sectionId, instructorEmail, subject, catalogNbr, courseTitle, false],
 			(err, res) => {
 				if(err) console.log(err.sqlMessage)
 				else console.log("Successfully inserted into Section")
@@ -266,6 +319,18 @@ function insertExcelDataIntoDB(excelData) {
 			}
 		)
 	}	
+}
+
+function getDate() {
+	var dateObj = new Date();
+	var month = dateObj.getUTCMonth() + 1; //months from 1-12
+	month = month.toString()
+	month = month.length == 1 ? `0${month}` : month
+	var day = dateObj.getUTCDate();
+	day = day.toString()
+	day = day.length == 1 ? `0${day}` : day
+	var year = dateObj.getUTCFullYear();
+	return month + "/" + day + "/" + year;
 }
 
 module.exports = router;

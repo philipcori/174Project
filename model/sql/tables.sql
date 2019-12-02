@@ -32,9 +32,6 @@ CREATE TABLE Admin
 (
 	admin_email varchar(50) PRIMARY KEY
 );
--- INSERT INTO `Student` VALUES('pcori@scu.edu');
-INSERT INTO `Admin` VALUES('aanderhub@scu.edu');
--- INSERT INTO `Professor` VALUES('dkertson@scu.edu');
 
 CREATE TABLE Section
 (
@@ -43,6 +40,7 @@ CREATE TABLE Section
 	course_subject varchar(10),
 	catalog_num varchar(10),
 	course_title varchar(100),
+	survey_period_active BOOLEAN,
 	CONSTRAINT FK_Section_Professor FOREIGN KEY (professor_email) REFERENCES Professor(professor_email)
 );
 
