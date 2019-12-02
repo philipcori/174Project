@@ -1,6 +1,41 @@
+/**
+ * Description: API handler for submitting a survey form
+*/
+
 var router = require('express').Router();
 const connection = require('../../model/database.js');
 
+
+/**
+ * Description: Handler that populates DB with survey data
+ * Parameters: Request in JSON format:
+	{
+		student_email: string;
+		auth_token: string;
+		section_id: string;	
+		q_1a: number;
+		q_1b: number;
+		q_1c: number;
+		q_1d: number;
+		q_1e: string;
+		q_1f: string;
+		q_2a: number;
+		q_2b: number;
+		q_2c: number;
+		q_2d: number;
+		q_2e: number;
+		q_2f: string;
+		q_3a: number;
+		q_3b: number;
+		q_3c: number;
+		q_3d: string;
+		q_4a: number;
+		q_4b: number;
+		q_4c: number;
+		q_5a: string;
+	}
+* Returns: Response with status 200 if operation completes successfully, or the error if an error occurs
+*/
 router.post('/', (req, res) => {
     const body = req.body;
     connection.query(

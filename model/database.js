@@ -1,3 +1,7 @@
+/*
+* Description: Connects to instance of the MySQL database
+*/
+
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({

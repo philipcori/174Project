@@ -1,17 +1,50 @@
+/**
+ * Description: API handlder and functions that enable the Excel Registration Data upload functionality
+ */
+
 var router = require('express').Router();
 const connection = require('../../model/database.js');
 const multer = require('multer');
 const uploadService = multer({ storage: multer.memoryStorage() });
 const xlsx = require('node-xlsx');
 
-
 /**
- * API endpoint for Excel Registration Data upload
- * 
+ * Description: Handler that inserts registration data in database if user is an admin
+ * Parameters: Request in JSON format:
+ * {
+ * 		uploadedFile : .xlsx file
+ * 		adminEmail : "aanderhub@scu.edu"
+ * }
+ * Returns: 200 status if successful, 403 status if user is not an admin
+ * Constraint: File must be file type of .xlsx in correct format
  */
 router.post('/', uploadService.single('uploadedFile'), (req, res) => {
-	var fileBuffer = req.file.buffer
-	var obj = xlsx.parse(fileBuffer)
+    var fileBuffer = req.file.buffer
+    let email = req.body.adminEmail
+    connection.query(
+        'SELECT * FROM Admin WHERE admin_email = ?',
+        email,
+        (err, result) => {
+            if (err) console.error(err)
+            else {
+                if (result.length > 0) {
+                    upload(fileBuffer)
+                    res.sendStatus(200)
+                } else {
+                    res.sendStatus(403)
+                }
+            }
+        }
+    )
+})
+
+/**
+ * Description: Parses the Registration Data excel file
+ * Parameters: fileBuffer (byte array)
+ * Returns: None
+ */
+function upload(fileBuffer) {
+    var obj = xlsx.parse(fileBuffer)
 	// Get column indices
 	var classNbrColumn
 	var subjectColumn
@@ -84,10 +117,13 @@ router.post('/', uploadService.single('uploadedFile'), (req, res) => {
     	'studentEmails': studentEmails
 	}
 	insertExcelDataIntoDB(excelData)
-	res.sendStatus(200)
-}) 
+}
 
-
+/**
+ * Description: Inserts excel data into database
+ * Parameters: excelData (object in format defined in upload())
+ * Returns: None
+ */
 function insertExcelDataIntoDB(excelData) {
 	let numRows = excelData.classNbrs.length
 	var i

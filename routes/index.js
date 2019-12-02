@@ -1,3 +1,7 @@
+/**
+ * Description: Middleware that mounts Express router with URLs for API endpoints
+ */
+
 var router = require('express').Router();
 
 router.use('/api/upload', require('./api/upload'));

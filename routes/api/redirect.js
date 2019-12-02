@@ -1,6 +1,22 @@
+/**
+ * Description: API handler for getting the type of user that logged in
+*/
+
 var router = require('express').Router();
 const connection = require('../../model/database.js');
 
+/**
+ * Description: Returns one of four types of users: admin, professor, student, or invalid
+ * Parameters: Request in JSON format:
+ * {
+	email: “aanderhub@scu.edu”
+	access_token: “3rklwljg23ljtljsg...”
+ * }
+ * Response: JSON object in format:
+ * {
+ * 		type: “student”, “professor”, “admin”, or “invalid”
+ * }
+*/
 router.post('/', (req, res) => {
 	let email = req.body.email
 	let resMsg = {

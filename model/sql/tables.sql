@@ -1,5 +1,8 @@
--- drop tables
+/*
+* Description: SQL script that creates all required tables for storing relevant data in MySQL database
+*/
 
+-- drop tables
 DROP TABLE `Admin`
 DROP TABLE Attends;
 DROP TABLE Assists;
@@ -71,6 +74,7 @@ CREATE TABLE Survey
 	CONSTRAINT FK_Survey_Section FOREIGN KEY (section_id) REFERENCES Section(section_id)
 );
 
+-- create tables for relationships
 CREATE TABLE Assists
 (
 	section_id integer,
