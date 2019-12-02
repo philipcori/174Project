@@ -97,17 +97,20 @@ function upload(fileBuffer) {
     var studentIds = []
 	var studentEmails = []
     var data = obj[0].data
+    var flag = 0;
     for(var i = 1; i < data.length; i++) {
 		if (!data[i][classNbrColumn]) break
-		data[i][classNbrColumn] ? classNbrs.push(data[i][classNbrColumn]) : return -1;
-		data[i][subjectColumn] ? subjects.push(data[i][subjectColumn]) : ;
-		data[i][catalogNumberColumn] ? catalogNumbers.push(data[i][catalogNumberColumn]) : return -1;
-		data[i][courseTitleColumn] ? courseTitles.push(data[i][courseTitleColumn]) : return -1;
-		data[i][instructorEmailColumn] ? instructorEmails.push(data[i][instructorEmailColumn]) : return -1;
-		data[i][instructorNameColumn] ? instructorNames.push(data[i][instructorNameColumn]) : return -1;
-    	data[i][studentIdColumn] ? studentIds.push(data[i][studentIdColumn]) : return -1;
-    	data[i][studentEmailColumn] ? studentEmails.push(data[i][studentEmailColumn]) : return -1;
+		data[i][classNbrColumn] ? classNbrs.push(data[i][classNbrColumn]) : flag = 1;
+		data[i][subjectColumn] ? subjects.push(data[i][subjectColumn]) : flag = 1;
+		data[i][catalogNumberColumn] ? catalogNumbers.push(data[i][catalogNumberColumn]) : flag = 1;
+		data[i][courseTitleColumn] ? courseTitles.push(data[i][courseTitleColumn]) : flag = 1;
+		data[i][instructorEmailColumn] ? instructorEmails.push(data[i][instructorEmailColumn]) : flag = 1;
+		data[i][instructorNameColumn] ? instructorNames.push(data[i][instructorNameColumn]) : flag = 1;
+    	data[i][studentIdColumn] ? studentIds.push(data[i][studentIdColumn]) : flag = 1;
+    	data[i][studentEmailColumn] ? studentEmails.push(data[i][studentEmailColumn]) : flag = 1;
     }
+    if(flag)
+    	return -1;
     var excelData = {
 		'classNbrs': classNbrs,
 		'subjects': subjects,
