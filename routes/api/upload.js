@@ -28,7 +28,9 @@ router.post('/', uploadService.single('uploadedFile'), (req, res) => {
             if (err) console.error(err)
             else {
                 if (result.length > 0) {
-                    upload(fileBuffer)
+                    if(upload(fileBuffer) == -1) {
+                    	res.sendStatus(415);
+                    }
                     res.sendStatus(200)
                 } else {
                     res.sendStatus(403)
@@ -115,6 +117,10 @@ function upload(fileBuffer) {
 		'instructorNames': instructorNames,
     	'studentIds': studentIds,
     	'studentEmails': studentEmails
+	}
+	if(!excelData.classNbrs || !excelData.subjects || !excelData.catalogNbrs || !excelData.courseTitles ||
+		!excelData.instructorEmails || !excelData.instructorNames || !excelData.studentIds || !excelData.studentEmails) {
+		return -1;
 	}
 	insertExcelDataIntoDB(excelData)
 }
