@@ -46,7 +46,7 @@ router.post('/', function(req, res) {
  * Parameters: None
  * Return: None
  */
-cron.schedule('0 15 3 * * *', () => {
+cron.schedule('0 20 3 * * *', () => {
 	console.log('checking to start survey period')
 	date = getDate()
 	if (date.localeCompare(emailDistributionDate) == 0) {
@@ -60,7 +60,7 @@ cron.schedule('0 15 3 * * *', () => {
  * Parameters: None
  * Return: None
  */
-cron.schedule('0 20 3 * * *', () => {
+cron.schedule('0 15 3 * * *', () => {
 	console.log('checking to end survey period')
 	date = getDate()
 	if (date.localeCompare(surveyExpirationDate) == 0) {
