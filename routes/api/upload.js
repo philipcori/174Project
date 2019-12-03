@@ -3,7 +3,7 @@
  */
 
 var router = require('express').Router();
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 const multer = require('multer');
 const uploadService = multer({ storage: multer.memoryStorage() });
 const xlsx = require('node-xlsx');
@@ -26,7 +26,8 @@ router.post('/', uploadService.single('uploadedFile'), (req, res) => {
 		return
 	}
     var fileBuffer = req.file.buffer
-    let email = req.body.adminEmail
+	let email = req.body.adminEmail
+	connection = database.getConnetion()
     connection.query(
         'SELECT * FROM Admin WHERE admin_email = ?',
         email,
@@ -136,6 +137,7 @@ function upload(fileBuffer) {
  * Returns: None
  */
 function insertExcelDataIntoDB(excelData) {
+	connection = database.getConnetion()
 	let numRows = excelData.classNbrs.length
 	var i
 	for (i = 0; i < numRows; i++) {

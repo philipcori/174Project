@@ -3,7 +3,7 @@
 */
 
 var router = require('express').Router();
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 
 /**
  * Description: Returns one of four types of users: admin, professor, student, or invalid
@@ -22,6 +22,7 @@ router.post('/', (req, res) => {
 	let resMsg = {
 		'type': 'invalid'
 	}
+	connection = database.getConnetion()
 	connection.query(
 		'SELECT admin_email FROM Admin WHERE admin_email = ?',
 		email,

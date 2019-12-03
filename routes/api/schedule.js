@@ -5,7 +5,7 @@
 var router = require('express').Router();
 const nodemailer = require('nodemailer')
 const cron = require('node-cron')
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 
 var emailDistributionDate = ''
 var surveyExpirationDate = ''
@@ -22,7 +22,8 @@ var surveyExpirationDate = ''
 */
 
 router.post('/', function(req, res) {
-    var email = req.body.adminEmail
+	var email = req.body.adminEmail
+	connection = database.getConnetion()
     connection.query(
         'SELECT * FROM Admin WHERE admin_email = ?',
         email,
@@ -74,6 +75,7 @@ cron.schedule('0 30 23 * * *', () => {
  * Return: None
  */
 function updateSectionsActivity(activity) {
+	connection = database.getConnetion()
 	connection.query(
 		'UPDATE Section SET survey_period_active = ?', 
 		activity,
@@ -102,6 +104,7 @@ function distributeEmails() {
 		  pass: '174Project'
 		}
 	});
+	connection = database.getConnetion()
 	connection.query(
 		'SELECT student_email FROM Student', 
 		(err, results) => {

@@ -3,7 +3,7 @@
 */
 
 var router = require('express').Router();
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 /*
 * Description: Handler that returns the sections taught be a given professor if survey period is in-active
 * Parameters: JSON object in format:
@@ -27,6 +27,7 @@ const connection = require('../../model/database.js');
 	]
 */
 router.post('/', (req, res) => {
+	connection = database.getConnetion()
 	connection.query(
 		'SELECT section_id, course_subject, catalog_num, course_title FROM Section WHERE professor_email = ? AND survey_period_active = ?',
 		[req.body.prof_email, false],

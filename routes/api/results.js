@@ -3,7 +3,7 @@
 */
 
 var router = require('express').Router();
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 
 
 /**
@@ -42,6 +42,7 @@ const connection = require('../../model/database.js');
   ]
 */
 router.post('/', (req, res) => {
+  connection = database.getConnetion()
   const section_id = req.body.section_id;
   connection.query(
     'SELECT * FROM Survey WHERE section_id = ?',

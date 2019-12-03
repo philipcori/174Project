@@ -3,7 +3,7 @@
 */
 
 var router = require('express').Router();
-const connection = require('../../model/database.js');
+const database = require('../../model/database.js');
 
 
 /**
@@ -37,7 +37,8 @@ const connection = require('../../model/database.js');
 * Returns: Response with status 200 if operation completes successfully, or the error if an error occurs
 */
 router.post('/', (req, res) => {
-    const body = req.body;
+	const body = req.body;
+	database.getConnetion()
     connection.query(
 		'INSERT INTO Survey (section_id, q_1a, q_1b, q_1c, q_1d, q_1e, q_1f, \
 q_2a, q_2b, q_2c, q_2d, q_2e, q_2f, q_3a, q_3b, q_3c, q_3d, q_4a, q_4b, q_4c, q_5a) \
